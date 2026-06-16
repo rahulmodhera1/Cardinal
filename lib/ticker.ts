@@ -1,20 +1,22 @@
 export interface TickerEntry {
   symbol: string;
-  type: "LONG" | "SHORT";
-  return: string;
-  duration: string;
+  price: string;
+  change: string;
   positive: boolean;
 }
 
+// Large-cap stocks only — no options, futures, or ETFs.
 export const tickerEntries: TickerEntry[] = [
-  { symbol: "AAPL", type: "LONG", return: "+8.4%", duration: "3d", positive: true },
-  { symbol: "SPY PUTS", type: "SHORT", return: "+22.1%", duration: "1d", positive: true },
-  { symbol: "/ES", type: "LONG", return: "+5.7%", duration: "6h", positive: true },
-  { symbol: "NVDA", type: "LONG", return: "+11.3%", duration: "4d", positive: true },
-  { symbol: "TSLA CALLS", type: "LONG", return: "+18.9%", duration: "2d", positive: true },
-  { symbol: "QQQ", type: "SHORT", return: "+7.2%", duration: "1d", positive: true },
-  { symbol: "/NQ", type: "LONG", return: "+9.4%", duration: "8h", positive: true },
-  { symbol: "MSFT", type: "LONG", return: "+6.1%", duration: "5d", positive: true },
-  { symbol: "AMD CALLS", type: "LONG", return: "+31.4%", duration: "3d", positive: true },
-  { symbol: "GLD", type: "LONG", return: "+4.8%", duration: "2d", positive: true },
+  { symbol: "AAPL",  price: "$229.42", change: "+1.18%", positive: true },
+  { symbol: "MSFT",  price: "$478.65", change: "+0.92%", positive: true },
+  { symbol: "NVDA",  price: "$142.30", change: "+2.64%", positive: true },
+  { symbol: "GOOGL", price: "$182.55", change: "-0.43%", positive: false },
+  { symbol: "AMZN",  price: "$214.80", change: "+0.76%", positive: true },
+  { symbol: "META",  price: "$612.90", change: "+1.45%", positive: true },
+  { symbol: "TSLA",  price: "$348.20", change: "-1.12%", positive: false },
+  { symbol: "AVGO",  price: "$238.15", change: "+1.88%", positive: true },
+  { symbol: "JPM",   price: "$268.40", change: "+0.35%", positive: true },
+  { symbol: "V",     price: "$352.70", change: "+0.61%", positive: true },
+  { symbol: "WMT",   price: "$98.25",  change: "+0.44%", positive: true },
+  { symbol: "LLY",   price: "$842.10", change: "-0.58%", positive: false },
 ];

@@ -16,14 +16,14 @@ export function TickerTape() {
             <span className="font-mono text-xs font-semibold text-ivory-text">
               {entry.symbol}
             </span>
+            <span className="font-mono text-xs text-muted">{entry.price}</span>
             <span
               className={`font-mono text-xs font-semibold ${
                 entry.positive ? "text-gain-light" : "text-loss"
               }`}
             >
-              {entry.return}
+              {entry.change}
             </span>
-            <span className="font-mono text-xs text-muted">{entry.duration}</span>
             <span className="text-navy-border mx-2 text-xs">·</span>
           </span>
         ))}
