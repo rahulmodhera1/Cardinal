@@ -3,18 +3,18 @@
 // Sits behind all content (-z-10); transparent sections reveal it.
 
 const orbs = [
-  { left: "10%", top: "16%", size: 320, color: "rgba(178,34,34,0.32)", blur: 45, anim: "drift-a", dur: 18, delay: 0   },
-  { left: "76%", top: "12%", size: 280, color: "rgba(204,34,34,0.26)", blur: 50, anim: "drift-b", dur: 22, delay: 1.5 },
-  { left: "58%", top: "50%", size: 380, color: "rgba(139,26,26,0.28)", blur: 55, anim: "drift-c", dur: 24, delay: 0.8 },
-  { left: "18%", top: "68%", size: 300, color: "rgba(178,34,34,0.26)", blur: 45, anim: "drift-b", dur: 20, delay: 2.5 },
-  { left: "46%", top: "30%", size: 240, color: "rgba(204,34,34,0.22)", blur: 40, anim: "drift-a", dur: 21, delay: 1   },
+  { left: "10%", top: "18%", size: 340, color: "rgba(194,32,32,0.42)", blur: 46, anim: "drift-a", dur: 18, delay: 0   },
+  { left: "74%", top: "14%", size: 300, color: "rgba(210,40,40,0.34)", blur: 50, anim: "drift-b", dur: 22, delay: 1.5 },
+  { left: "56%", top: "52%", size: 420, color: "rgba(150,28,28,0.36)", blur: 58, anim: "drift-c", dur: 24, delay: 0.8 },
+  { left: "16%", top: "70%", size: 320, color: "rgba(194,32,32,0.34)", blur: 46, anim: "drift-b", dur: 20, delay: 2.5 },
+  { left: "46%", top: "32%", size: 260, color: "rgba(210,40,40,0.28)", blur: 42, anim: "drift-a", dur: 21, delay: 1   },
 ];
 
 export function SiteBackground() {
   return (
     <div
       aria-hidden="true"
-      className="fixed inset-0 -z-10 overflow-hidden pointer-events-none"
+      className="fixed inset-0 z-0 overflow-hidden pointer-events-none"
     >
       {/* Red radial glow ambiance */}
       <div

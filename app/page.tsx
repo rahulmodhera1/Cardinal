@@ -15,21 +15,23 @@ export default function Home() {
   return (
     <>
       <SiteBackground />
-      {/* Navbar is sticky (in normal flow), so the ticker naturally sits
-          flush right after it — no overlap, no gap, no magic padding. */}
-      <Navbar />
-      <TickerTape />
-      <main>
-        <Hero />
-        <WhyCardinal />
-        <HowItWorks />
-        <BotsSection />
-        <PricingSection />
-        <PerformanceSection />
-        <FAQ />
-        <CTABanner />
-      </main>
-      <Footer />
+      {/* Content sits above the fixed background layer. Navbar is sticky
+          (in normal flow), so the ticker sits flush right after it. */}
+      <div className="relative z-10">
+        <Navbar />
+        <TickerTape />
+        <main>
+          <Hero />
+          <WhyCardinal />
+          <HowItWorks />
+          <BotsSection />
+          <PricingSection />
+          <PerformanceSection />
+          <FAQ />
+          <CTABanner />
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }
