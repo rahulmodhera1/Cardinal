@@ -41,7 +41,7 @@ export function Navbar() {
             height={390}
             priority
             className="w-auto flex-shrink-0"
-            style={{ height: "58px" }}
+            style={{ height: "54px", transform: "translateY(-5px)" }}
           />
           <div className="flex flex-col justify-center leading-tight">
             <span
