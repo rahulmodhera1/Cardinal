@@ -35,13 +35,13 @@ export function Navbar() {
         {/* Left: logo + wordmark */}
         <a href="#" className="flex items-center gap-4 flex-shrink-0">
           <Image
-            src="/cardinal-logo.png"
+            src="/cardinal-bird.png"
             alt="Cardinal Capital Markets"
-            width={729}
-            height={660}
+            width={482}
+            height={390}
             priority
             className="w-auto flex-shrink-0"
-            style={{ height: "60px" }}
+            style={{ height: "58px" }}
           />
           <div className="flex flex-col justify-center leading-tight">
             <span
