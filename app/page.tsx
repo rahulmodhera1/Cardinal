@@ -14,9 +14,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      {/* Push content below fixed navbar (h-20 = 80px) + a small gap so the
-          ticker doesn't touch the banner */}
-      <div className="pt-24">
+      {/* Push content below fixed navbar (h-20 = 80px) so the ticker sits
+          flush right beneath it — no overlap, no gap */}
+      <div className="pt-20">
         <TickerTape />
         <main>
           <Hero />
