@@ -32,17 +32,19 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
-        {/* Logo — correct 1408×768 aspect ratio, proper transparent PNG */}
+        {/* Logo */}
         <a href="#" className="flex-shrink-0">
-          <Image
-            src="/logo.png"
-            alt="Cardinal Capital Markets"
-            width={1408}
-            height={768}
-            priority
-            className="w-auto"
-            style={{ height: "52px" }}
-          />
+          <div className="bg-white rounded-lg px-3 py-1.5">
+            <Image
+              src="/logo.png"
+              alt="Cardinal Capital Markets"
+              width={1408}
+              height={768}
+              priority
+              className="w-auto"
+              style={{ height: "44px" }}
+            />
+          </div>
         </a>
 
         {/* Desktop links */}
