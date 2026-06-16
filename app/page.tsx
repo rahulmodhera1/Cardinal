@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      {/* Push content below fixed navbar (h-16 = 64px) */}
-      <div className="pt-16">
+      {/* Push content below fixed navbar (h-20 = 80px) */}
+      <div className="pt-20">
         <TickerTape />
         <main>
           <Hero />
