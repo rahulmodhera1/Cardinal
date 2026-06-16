@@ -31,15 +31,17 @@ export function Navbar() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo — cream pill so it sits cleanly on dark bg */}
+
+        {/* Logo — correct 1408×768 aspect ratio, proper transparent PNG */}
         <a href="#" className="flex-shrink-0">
           <Image
             src="/logo.png"
             alt="Cardinal Capital Markets"
-            width={180}
-            height={50}
+            width={1408}
+            height={768}
             priority
-            className="h-11 w-auto"
+            className="w-auto"
+            style={{ height: "52px" }}
           />
         </a>
 
@@ -61,7 +63,7 @@ export function Navbar() {
         <div className="hidden md:flex">
           <a
             href="#pricing"
-            className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text text-sm font-bold px-6 py-2.5 rounded-full"
+            className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-white text-sm font-bold px-6 py-2.5 rounded-full"
           >
             Get Access
           </a>
@@ -93,7 +95,7 @@ export function Navbar() {
               <a
                 href="#pricing"
                 onClick={() => setOpen(false)}
-                className="mt-4 bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text font-bold px-6 py-3 rounded-full text-center transition-colors"
+                className="mt-4 bg-cardinal-red hover:bg-cardinal-red-dark text-white font-bold px-6 py-3 rounded-full text-center transition-colors"
               >
                 Get Access
               </a>
