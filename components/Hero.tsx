@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Sparkline } from "@/components/Sparkline";
 
@@ -20,16 +19,6 @@ const trades = [
   { symbol: "TSLA CALLS", side: "LONG",  ret: "+18.9%", status: "CLOSED" },
 ];
 
-// Diagonal speed-streak lines that fire on bird entry
-const streaks = [
-  { top: 12, width: 320, opacity: 0.55, delay: 0.42 },
-  { top: 18, width: 480, opacity: 0.40, delay: 0.46 },
-  { top: 25, width: 260, opacity: 0.30, delay: 0.50 },
-  { top: 32, width: 560, opacity: 0.45, delay: 0.44 },
-  { top: 38, width: 200, opacity: 0.25, delay: 0.54 },
-  { top: 44, width: 400, opacity: 0.35, delay: 0.48 },
-  { top: 50, width: 300, opacity: 0.28, delay: 0.56 },
-];
 
 export function Hero() {
   const prefersReduced = useReducedMotion();
@@ -76,93 +65,6 @@ export function Hero() {
         style={{ background: "linear-gradient(to bottom, transparent, #000)" }}
       />
 
-      {/* ══════════════════════════════════════════════
-          CARDINAL BIRD — cinematic flight animation
-      ══════════════════════════════════════════════ */}
-      {!prefersReduced && (
-        <div
-          className="absolute inset-0 pointer-events-none select-none overflow-hidden"
-          style={{ zIndex: 1 }}
-        >
-          {/* Speed streaks — burst in just before the bird arrives */}
-          {streaks.map((s, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              style={{
-                top: `${s.top}%`,
-                right: 0,
-                height: "1px",
-                width: `${s.width}px`,
-                background: `linear-gradient(to left, transparent, rgba(178,34,34,${s.opacity}), transparent)`,
-                transformOrigin: "right center",
-              }}
-              initial={{ scaleX: 0, opacity: 0 }}
-              animate={{ scaleX: [0, 1, 1, 0], opacity: [0, 1, 0.8, 0] }}
-              transition={{ duration: 0.9, delay: s.delay, ease: "easeOut" }}
-            />
-          ))}
-
-          {/* Bird container — sweeps in from upper-right at a banking angle */}
-          <motion.div
-            style={{
-              position: "absolute",
-              /* Sit in upper-right quadrant, overlapping right column */
-              right: "-2%",
-              top: "-2%",
-              width: "clamp(480px, 58vw, 860px)",
-              /* Screen blend: dark halo pixels dissolve into black bg */
-              mixBlendMode: "screen",
-              /* Fade out the text portion at bottom of the logo PNG */
-              maskImage: "linear-gradient(to bottom, black 46%, transparent 64%)",
-              WebkitMaskImage: "linear-gradient(to bottom, black 46%, transparent 64%)",
-            }}
-            /* Entry: bank in from far upper-right */
-            initial={{ x: "55vw", y: "-30vh", rotate: 18, scale: 0.55, opacity: 0 }}
-            animate={{ x: 0, y: 0, rotate: 0, scale: 1, opacity: 1 }}
-            transition={{ duration: 1.6, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-          >
-            {/* Wing-beat flight loop
-                scaleY pumps up/down to simulate wings; y bobs in sync;
-                rotate tilts body as if adjusting in air */}
-            <motion.div
-              animate={{
-                y:      [0, -22, -6, -28, -8, -18,  0],
-                rotate: [0,  -4,  1,  -3,  2,  -2,  0],
-                scaleY: [1, 1.06, 0.95, 1.07, 0.96, 1.04, 1],
-              }}
-              transition={{
-                duration: 2.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatType: "mirror",
-                delay: 2.2, // starts after entry completes
-              }}
-            >
-              {/* Breathing cardinal-red glow — synced slightly faster than wing beat */}
-              <motion.div
-                animate={{
-                  filter: [
-                    "drop-shadow(0 0 18px rgba(178,34,34,0.45)) drop-shadow(0 0 45px rgba(178,34,34,0.18))",
-                    "drop-shadow(0 0 52px rgba(210,20,20,0.88)) drop-shadow(0 0 110px rgba(178,34,34,0.48))",
-                    "drop-shadow(0 0 18px rgba(178,34,34,0.45)) drop-shadow(0 0 45px rgba(178,34,34,0.18))",
-                  ],
-                }}
-                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <Image
-                  src="/logo.png"
-                  alt=""
-                  width={1408}
-                  height={768}
-                  className="w-full h-auto"
-                  priority
-                />
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      )}
 
       {/* ── Page content ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
