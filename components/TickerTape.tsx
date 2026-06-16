@@ -1,7 +1,21 @@
-import { tickerEntries } from "@/lib/ticker";
+"use client";
+
+import { useEffect, useState } from "react";
+import { baseQuotes, generateQuotes, type TickerQuote } from "@/lib/ticker";
 
 export function TickerTape() {
-  const entries = [...tickerEntries, ...tickerEntries];
+  // Start from the deterministic baseline so SSR and first client render match.
+  const [quotes, setQuotes] = useState<TickerQuote[]>(baseQuotes);
+
+  useEffect(() => {
+    // New snapshot on every page load…
+    setQuotes(generateQuotes());
+    // …and keep it ticking live while the page is open.
+    const id = setInterval(() => setQuotes(generateQuotes()), 3500);
+    return () => clearInterval(id);
+  }, []);
+
+  const entries = [...quotes, ...quotes];
 
   return (
     <div
