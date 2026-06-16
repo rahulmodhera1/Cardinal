@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Sparkline } from "@/components/Sparkline";
 
@@ -34,7 +35,8 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen bg-black flex items-center pt-10 pb-16 overflow-hidden">
-      {/* 3D beams background */}
+
+      {/* ── 3D Beams background ── */}
       {!prefersReduced && (
         <div className="absolute inset-0 z-0">
           <Beams
@@ -50,24 +52,81 @@ export function Hero() {
         </div>
       )}
 
-      {/* Gradient vignette so text stays legible over beams */}
+      {/* ── Gradient vignette ── */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0.92) 100%)",
+            "radial-gradient(ellipse at 60% 50%, transparent 25%, rgba(0,0,0,0.6) 65%, rgba(0,0,0,0.9) 100%)",
         }}
       />
-      {/* Bottom fade */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-40 z-0 pointer-events-none"
+        className="absolute bottom-0 left-0 right-0 h-48 z-0 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
       />
 
+      {/* ── Animated Cardinal bird ── */}
+      {!prefersReduced && (
+        /* Wrapper centres the bird horizontally using flex */
+        <div
+          className="absolute inset-0 flex justify-center pointer-events-none select-none"
+          style={{ zIndex: 1 }}
+        >
+          {/* Entry sweep: drop in from above with slight tilt */}
+          <motion.div
+            style={{
+              width: "clamp(500px, 62vw, 920px)",
+              alignSelf: "flex-start",
+              marginTop: "-4%",
+              /* Screen blend: dark halo pixels vanish into the black bg;
+                 only the bright red cardinal shows through */
+              mixBlendMode: "screen",
+              /* Fade out the bottom (text area) of the logo */
+              maskImage: "linear-gradient(to bottom, black 48%, transparent 66%)",
+              WebkitMaskImage: "linear-gradient(to bottom, black 48%, transparent 66%)",
+            }}
+            initial={{ y: -140, opacity: 0, rotate: -10, scale: 0.78 }}
+            animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
+            transition={{ duration: 1.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {/* Idle float: gentle soaring motion */}
+            <motion.div
+              animate={{
+                y: [0, -24, 6, -14, 0],
+                rotate: [0, 2.5, -0.8, 1.8, 0],
+              }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {/* Pulsing cardinal-red glow aura */}
+              <motion.div
+                animate={{
+                  filter: [
+                    "drop-shadow(0 0 22px rgba(178,34,34,0.5)) drop-shadow(0 0 55px rgba(178,34,34,0.22))",
+                    "drop-shadow(0 0 55px rgba(200,20,20,0.9)) drop-shadow(0 0 120px rgba(178,34,34,0.5))",
+                    "drop-shadow(0 0 22px rgba(178,34,34,0.5)) drop-shadow(0 0 55px rgba(178,34,34,0.22))",
+                  ],
+                }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Image
+                  src="/logo.png"
+                  alt=""
+                  width={1408}
+                  height={768}
+                  className="w-full h-auto"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* ── Page content ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center">
 
-          {/* ── Left: Copy ── */}
+          {/* Left: Copy */}
           <div>
             <motion.p
               {...fadeUp(0)}
@@ -137,7 +196,7 @@ export function Hero() {
             </motion.p>
           </div>
 
-          {/* ── Right: Live Bot Card ── */}
+          {/* Right: Live Bot Card */}
           <motion.div
             initial={{ opacity: 0, x: prefersReduced ? 0 : 64 }}
             animate={{ opacity: 1, x: 0 }}
