@@ -1,0 +1,37 @@
+<svg viewBox="0 0 280 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Chart/trend line rising through composition -->
+  <polyline points="8,62 20,52 30,56 40,44 52,40 62,28" stroke="#8B1A1A" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Arrow head -->
+  <polygon points="62,28 56,27 57,33" fill="#8B1A1A"/>
+
+  <!-- Wing (back shadow) -->
+  <path d="M 22 46 Q 34 28 52 36 Q 46 44 32 46 Z" fill="#8B1A1A"/>
+
+  <!-- Bird body -->
+  <ellipse cx="34" cy="42" rx="14" ry="10" fill="#B22222"/>
+
+  <!-- Crest - cardinal's pointed top -->
+  <path d="M 27 33 L 30 20 L 33 28 L 36 16 L 39 27 Q 35 28 34 32 Q 30 31 27 33 Z" fill="#B22222"/>
+
+  <!-- Tail feathers -->
+  <path d="M 21 44 L 11 52 L 17 52 L 13 58 L 21 50 Z" fill="#B22222"/>
+
+  <!-- Body shadow detail -->
+  <ellipse cx="36" cy="40" rx="8" ry="5" fill="#8B1A1A" fill-opacity="0.35"/>
+
+  <!-- Beak -->
+  <path d="M 46 40 L 55 42 L 46 44 Z" fill="#C0392B"/>
+
+  <!-- Eye -->
+  <circle cx="43" cy="38" r="2" fill="#0F1E35"/>
+  <circle cx="43.6" cy="37.4" r="0.8" fill="white"/>
+
+  <!-- CARDINAL text -->
+  <text x="70" y="40" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#1B2A4A" letter-spacing="4">CARDINAL</text>
+
+  <!-- CAPITAL MARKETS -->
+  <text x="70" y="57" font-family="Georgia, 'Times New Roman', serif" font-size="11" fill="#1B2A4A" letter-spacing="3.5">CAPITAL MARKETS</text>
+
+  <!-- PROFESSIONAL TRADING SOLUTIONS -->
+  <text x="70" y="70" font-family="Georgia, 'Times New Roman', serif" font-size="7.5" fill="#1B2A4A" letter-spacing="2">PROFESSIONAL TRADING SOLUTIONS</text>
+</svg>

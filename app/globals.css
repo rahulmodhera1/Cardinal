@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cardinal brand colors */
+  --color-cardinal-red: #B22222;
+  --color-cardinal-red-dark: #8B1A1A;
+  --color-cardinal-red-mid: #C0392B;
+
+  /* Navy palette */
+  --color-navy: #1B2A4A;
+  --color-navy-deep: #0F1E35;
+  --color-navy-surface: #1E3155;
+  --color-navy-border: #2A4070;
+
+  /* Ivory palette */
+  --color-ivory: #F5F0E8;
+  --color-ivory-warm: #EDE7D9;
+  --color-ivory-text: #F0EAD6;
+
+  /* Supporting colors */
+  --color-muted: #A8A09A;
+  --color-gain: #2E7D52;
+  --color-gain-light: #4CAF80;
+  --color-loss: #8B4040;
+
+  /* Font */
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* CSS custom properties for inline styles */
+:root {
+  --cardinal-red: #B22222;
+  --cardinal-red-dark: #8B1A1A;
+  --navy: #1B2A4A;
+  --navy-deep: #0F1E35;
+  --navy-surface: #1E3155;
+  --navy-border: #2A4070;
+  --ivory: #F5F0E8;
+  --ivory-warm: #EDE7D9;
+  --ivory-text: #F0EAD6;
+  --gain: #2E7D52;
+  --gain-light: #4CAF80;
+  --loss: #8B4040;
+}
+
+/* Ticker tape scroll animation */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker-scroll 40s linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Accordion animations */
+@keyframes accordion-down {
+  from { height: 0; overflow: hidden; }
+  to { height: var(--radix-accordion-content-height); overflow: hidden; }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); overflow: hidden; }
+  to { height: 0; overflow: hidden; }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
+
+/* Subtle chart grid for hero section */
+.chart-grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0F1E35;
+  color: #F0EAD6;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
