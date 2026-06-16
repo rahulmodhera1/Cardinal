@@ -49,7 +49,7 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
       <div className="flex items-center gap-2 mb-4">
         <span
           className="w-2 h-2 rounded-full inline-block ring-2 ring-offset-1"
-          style={{ backgroundColor: riskDot[bot.risk], ringColor: riskDot[bot.risk] }}
+          style={{ backgroundColor: riskDot[bot.risk] }}
         />
         <span className={`text-xs font-mono font-semibold ${riskLabel[bot.risk]}`}>{bot.risk}</span>
       </div>
