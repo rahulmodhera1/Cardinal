@@ -30,7 +30,7 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center justify-between gap-6">
+      <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center gap-6">
 
         {/* Left: logo + wordmark */}
         <a href="#" className="flex items-center gap-4 flex-shrink-0">
@@ -59,25 +59,25 @@ export function Navbar() {
           </div>
         </a>
 
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8 flex-shrink-0">
+        {/* Center: nav links spread across the open space */}
+        <div className="hidden md:flex flex-1 items-center justify-center gap-10 lg:gap-14">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="relative text-white/70 hover:text-white text-sm font-semibold tracking-wide transition-colors duration-200 group"
+              className="relative text-white/60 hover:text-white text-[0.8rem] font-semibold uppercase tracking-[0.16em] transition-colors duration-200 group py-1"
             >
               {link.label}
-              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-cardinal-red to-cardinal-red-mid transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 rounded-full bg-gradient-to-r from-cardinal-red to-cardinal-red-mid transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="hidden md:flex">
+        {/* Right: CTA */}
+        <div className="hidden md:flex flex-shrink-0">
           <a
             href="#pricing"
-            className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-white text-sm font-bold px-6 py-2.5 rounded-full"
+            className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-white text-[0.8rem] font-bold uppercase tracking-wider px-7 py-2.5 rounded-full"
           >
             Get Access
           </a>
@@ -87,7 +87,7 @@ export function Navbar() {
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button
-              className="md:hidden text-white p-2 rounded-md hover:bg-white/10 transition-colors"
+              className="md:hidden ml-auto text-white p-2 rounded-md hover:bg-white/10 transition-colors"
               aria-label="Open menu"
             >
               <Menu className="h-6 w-6" />
