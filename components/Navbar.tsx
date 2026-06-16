@@ -30,10 +30,10 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
+      <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center justify-between gap-4">
 
-        {/* Banner: bird logo + metallic tagline */}
-        <a href="#" className="flex items-center gap-5 min-w-0 flex-shrink">
+        {/* Banner: bird logo + warm metallic tagline */}
+        <a href="#" className="flex items-center gap-4 min-w-0 flex-shrink">
           <Image
             src="/cardinal-logo.png"
             alt="Cardinal Capital Markets"
@@ -44,20 +44,20 @@ export function Navbar() {
             style={{ height: "66px" }}
           />
           <span
-            className="hidden xl:block font-serif uppercase whitespace-nowrap select-none"
+            className="hidden lg:block font-serif uppercase whitespace-nowrap select-none"
             style={{
               fontSize: "1.6rem",
               letterSpacing: "0.06em",
               backgroundImage:
-                "linear-gradient(180deg,#f7f7f7 0%,#ffffff 16%,#b9b9b9 45%,#6d6d6d 51%,#cfcfcf 57%,#ffffff 82%,#cccccc 100%)",
+                "linear-gradient(180deg,#fff6ee 0%,#ffe7d2 16%,#e0a276 44%,#9c2b22 51%,#d99a6c 57%,#fff1e3 82%,#e6b389 100%)",
               WebkitBackgroundClip: "text",
               backgroundClip: "text",
               WebkitTextFillColor: "transparent",
               color: "transparent",
-              textShadow: "0 1px 2px rgba(0,0,0,0.45)",
+              textShadow: "0 1px 2px rgba(0,0,0,0.5)",
             }}
           >
-            Swing Trading. Automated. Tested.
+            Cardinal Trading.
           </span>
         </a>
 
