@@ -41,7 +41,7 @@ export function Navbar() {
             height={768}
             priority
             className="w-auto"
-            style={{ height: "48px", mixBlendMode: "screen" }}
+            style={{ height: "58px" }}
           />
         </a>
 
