@@ -23,11 +23,11 @@ export function Footer() {
           {/* Logo column */}
           <div className="md:col-span-2">
             <Image
-              src="/logo.png"
+              src="/cardinal-logo.png"
               alt="Cardinal Capital Markets"
-              width={180}
-              height={50}
-              className="h-11 w-auto mb-4"
+              width={729}
+              height={660}
+              className="h-20 w-auto mb-4"
             />
             <p className="text-muted text-sm mt-3 leading-relaxed max-w-xs">
               Professional swing trading automation for serious market participants.

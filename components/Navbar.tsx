@@ -35,13 +35,13 @@ export function Navbar() {
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
           <Image
-            src="/logo.png"
+            src="/cardinal-logo.png"
             alt="Cardinal Capital Markets"
-            width={1408}
-            height={768}
+            width={729}
+            height={660}
             priority
             className="w-auto"
-            style={{ height: "58px" }}
+            style={{ height: "60px" }}
           />
         </a>
 
