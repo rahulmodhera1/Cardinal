@@ -28,7 +28,7 @@ export function HowItWorks() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section id="how-it-works" className="bg-navy-deep py-24">
+    <section id="how-it-works" className="relative py-24">
       <div className="max-w-7xl mx-auto px-6">
         <p className="font-mono text-xs tracking-widest uppercase text-cardinal-red text-center mb-4">
           How It Works

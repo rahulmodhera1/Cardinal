@@ -17,7 +17,7 @@ const companyLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-navy-deep border-t border-navy-border">
+    <footer className="relative border-t border-navy-border">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Logo column */}

@@ -13,7 +13,7 @@ export function FAQ() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section id="faq" className="bg-navy-deep py-24">
+    <section id="faq" className="relative py-24">
       <div className="max-w-3xl mx-auto px-6">
         <p className="font-mono text-xs tracking-widest uppercase text-cardinal-red text-center mb-4">
           FAQ

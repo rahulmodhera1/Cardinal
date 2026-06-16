@@ -31,7 +31,7 @@ export function WhyCardinal() {
   });
 
   return (
-    <section className="bg-navy-deep py-24">
+    <section className="relative py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Eyebrow */}
         <p className="font-mono text-xs tracking-widest uppercase text-cardinal-red text-center mb-4">
