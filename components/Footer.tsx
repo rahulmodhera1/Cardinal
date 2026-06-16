@@ -22,15 +22,13 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Logo column */}
           <div className="md:col-span-2">
-            <div className="inline-block bg-ivory rounded-xl px-3 py-1.5 mb-4">
-              <Image
-                src="/logo.png"
-                alt="Cardinal Capital Markets"
-                width={160}
-                height={45}
-                className="h-10 w-auto"
-              />
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Cardinal Capital Markets"
+              width={180}
+              height={50}
+              className="h-11 w-auto mb-4"
+            />
             <p className="text-muted text-sm mt-3 leading-relaxed max-w-xs">
               Professional swing trading automation for serious market participants.
             </p>

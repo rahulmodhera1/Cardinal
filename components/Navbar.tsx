@@ -26,23 +26,21 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-navy-deep/90 backdrop-blur-xl border-b border-navy-border/60 shadow-2xl shadow-black/30"
+          ? "bg-black/85 backdrop-blur-xl border-b border-white/8 shadow-2xl shadow-black/50"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo — cream pill so it sits cleanly on dark bg */}
         <a href="#" className="flex-shrink-0">
-          <div className="bg-ivory rounded-xl px-3 py-1.5 shadow-sm">
-            <Image
-              src="/logo.png"
-              alt="Cardinal Capital Markets"
-              width={160}
-              height={44}
-              priority
-              className="h-9 w-auto"
-            />
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Cardinal Capital Markets"
+            width={180}
+            height={50}
+            priority
+            className="h-11 w-auto"
+          />
         </a>
 
         {/* Desktop links */}
@@ -51,7 +49,7 @@ export function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className="relative text-ivory-text/75 hover:text-ivory-text text-sm font-semibold tracking-wide transition-colors duration-200 group"
+              className="relative text-white/70 hover:text-white text-sm font-semibold tracking-wide transition-colors duration-200 group"
             >
               {link.label}
               <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-cardinal-red to-cardinal-red-mid transition-all duration-300 group-hover:w-full" />
@@ -73,7 +71,7 @@ export function Navbar() {
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button
-              className="md:hidden text-ivory-text p-2 rounded-md hover:bg-navy-surface transition-colors"
+              className="md:hidden text-white p-2 rounded-md hover:bg-white/10 transition-colors"
               aria-label="Open menu"
             >
               <Menu className="h-6 w-6" />
@@ -87,7 +85,7 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-ivory-text/80 hover:text-ivory-text text-lg font-semibold transition-colors"
+                  className="text-white/80 hover:text-white text-lg font-semibold transition-colors"
                 >
                   {link.label}
                 </a>

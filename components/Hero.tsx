@@ -1,7 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { motion, useReducedMotion } from "framer-motion";
 import { Sparkline } from "@/components/Sparkline";
+
+const Beams = dynamic(
+  () => import("@/components/ui/Beams").then((m) => ({ default: m.Beams })),
+  { ssr: false },
+);
 
 const heroSparkline = [100, 104, 101, 108, 106, 112, 110, 118, 115, 122, 119, 128];
 
@@ -27,18 +33,36 @@ export function Hero() {
   });
 
   return (
-    <section className="relative min-h-screen bg-navy-deep chart-grid-bg flex items-center pt-10 pb-16 overflow-hidden">
-      {/* Floating glow orbs */}
+    <section className="relative min-h-screen bg-black flex items-center pt-10 pb-16 overflow-hidden">
+      {/* 3D beams background */}
       {!prefersReduced && (
-        <>
-          <div className="hero-orb-1" style={{ top: "10%", left: "-5%" }} />
-          <div className="hero-orb-2" style={{ bottom: "15%", right: "-8%" }} />
-          <div
-            className="hero-orb-1"
-            style={{ top: "50%", left: "45%", animationDelay: "-4s", opacity: 0.4, width: 400, height: 400 }}
+        <div className="absolute inset-0 z-0">
+          <Beams
+            beamWidth={2.5}
+            beamHeight={20}
+            beamNumber={14}
+            lightColor="#CC1111"
+            speed={2}
+            noiseIntensity={1.6}
+            scale={0.18}
+            rotation={40}
           />
-        </>
+        </div>
       )}
+
+      {/* Gradient vignette so text stays legible over beams */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(0,0,0,0.65) 70%, rgba(0,0,0,0.92) 100%)",
+        }}
+      />
+      {/* Bottom fade */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 z-0 pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
         <div className="grid lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center">
@@ -58,7 +82,7 @@ export function Hero() {
                 className="font-bold leading-[1.08]"
                 style={{ fontSize: "clamp(2.5rem, 5vw, 4.25rem)", letterSpacing: "-0.03em" }}
               >
-                <span className="text-ivory-text">Swing Trading.</span>
+                <span className="text-white">Swing Trading.</span>
               </motion.h1>
 
               <motion.h1
@@ -66,8 +90,7 @@ export function Hero() {
                 className="font-bold leading-[1.08]"
                 style={{ fontSize: "clamp(2.5rem, 5vw, 4.25rem)", letterSpacing: "-0.03em" }}
               >
-                <span className="text-ivory-text">Automated. </span>
-                {/* Shimmer effect on "Tested." */}
+                <span className="text-white">Automated. </span>
                 <span className="text-shimmer-red">Tested.</span>
               </motion.h1>
 
@@ -76,7 +99,7 @@ export function Hero() {
                 className="font-bold leading-[1.08]"
                 style={{ fontSize: "clamp(2.5rem, 5vw, 4.25rem)", letterSpacing: "-0.03em" }}
               >
-                <span className="text-ivory-text">Built to Perform.</span>
+                <span className="text-white">Built to Perform.</span>
               </motion.h1>
             </div>
 
@@ -92,13 +115,13 @@ export function Hero() {
             <motion.div {...fadeUp(0.56)} className="flex flex-wrap gap-4 mt-10">
               <a
                 href="#pricing"
-                className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text font-bold px-8 py-3.5 rounded-full"
+                className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-white font-bold px-8 py-3.5 rounded-full"
               >
                 Explore Plans
               </a>
               <a
                 href="#performance"
-                className="border border-navy-border text-ivory-text hover:border-cardinal-red/70 hover:text-ivory-text px-8 py-3.5 rounded-full transition-all duration-200 hover:bg-cardinal-red/5"
+                className="border border-white/20 text-white hover:border-cardinal-red/70 px-8 py-3.5 rounded-full transition-all duration-200 hover:bg-cardinal-red/10 backdrop-blur-sm"
               >
                 See Performance
               </a>
@@ -126,36 +149,31 @@ export function Hero() {
               damping: 18,
             }}
           >
-            {/* Glass card */}
             <div className="glass-card rounded-2xl p-6 relative overflow-hidden">
-              {/* Subtle inner top glow */}
               <div
                 className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-px"
-                style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.7), transparent)" }}
+                style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.8), transparent)" }}
               />
 
-              {/* Header */}
               <div className="flex items-center justify-between mb-4">
-                <span className="font-bold text-ivory-text text-lg tracking-tight">Cardinal Alpha-1</span>
+                <span className="font-bold text-white text-lg tracking-tight">Cardinal Alpha-1</span>
                 <span className="flex items-center gap-1.5 bg-cardinal-red/20 border border-cardinal-red/60 text-cardinal-red text-xs font-mono px-2.5 py-1 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-cardinal-red animate-pulse" />
                   LIVE
                 </span>
               </div>
 
-              {/* Sparkline */}
-              <div className="mb-4 rounded-xl overflow-hidden" style={{ background: "rgba(178,34,34,0.04)" }}>
+              <div className="mb-4 rounded-xl overflow-hidden" style={{ background: "rgba(178,34,34,0.06)" }}>
                 <Sparkline
                   data={heroSparkline}
                   width={340}
                   height={80}
                   lineColor="#B22222"
-                  fillColor="rgba(178,34,34,0.18)"
+                  fillColor="rgba(178,34,34,0.2)"
                   className="w-full"
                 />
               </div>
 
-              {/* Stats */}
               <div className="grid grid-cols-3 gap-4 mb-4">
                 {[
                   { label: "Win Rate",   value: "68%",    green: true },
@@ -163,7 +181,7 @@ export function Hero() {
                   { label: "MTD Return", value: "+14.2%", green: true },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <div className={`font-mono text-xl font-bold ${stat.green ? "text-gain-light" : "text-ivory-text"}`}>
+                    <div className={`font-mono text-xl font-bold ${stat.green ? "text-gain-light" : "text-white"}`}>
                       {stat.value}
                     </div>
                     <div className="font-mono text-xs text-muted mt-0.5">{stat.label}</div>
@@ -171,14 +189,13 @@ export function Hero() {
                 ))}
               </div>
 
-              <div className="border-t border-navy-border/50 my-4" />
+              <div className="border-t border-white/10 my-4" />
 
-              {/* Last 5 trades */}
               <div className="space-y-2.5">
                 <p className="font-mono text-xs text-muted uppercase tracking-widest mb-3">Last 5 Trades</p>
                 {trades.map((trade, i) => (
                   <div key={i} className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-ivory-text font-semibold w-24 truncate">{trade.symbol}</span>
+                    <span className="text-white font-semibold w-24 truncate">{trade.symbol}</span>
                     <span
                       className={`px-1.5 py-0.5 rounded text-xs font-mono ${
                         trade.side === "LONG" ? "bg-gain/20 text-gain-light" : "bg-loss/20 text-loss"

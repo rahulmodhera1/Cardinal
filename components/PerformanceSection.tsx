@@ -36,13 +36,13 @@ export function PerformanceSection() {
   const prefersReduced = useReducedMotion();
 
   return (
-    <section id="performance" className="bg-ivory py-24">
+    <section id="performance" className="bg-navy-deep py-24">
       <div className="max-w-7xl mx-auto px-6">
         <p className="font-mono text-xs tracking-widest uppercase text-cardinal-red text-center mb-4">
           Performance
         </p>
         <h2
-          className="text-navy font-bold text-center mb-16"
+          className="text-ivory-text font-bold text-center mb-16"
           style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
         >
           We show you the full picture.
@@ -56,7 +56,7 @@ export function PerformanceSection() {
             viewport={{ once: true }}
             transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-navy/80 text-lg leading-relaxed max-w-md mb-12">
+            <p className="text-muted text-lg leading-relaxed max-w-md mb-12">
               Most algo trading platforms cherry-pick their winners. At Cardinal, every
               bot&apos;s full trade history — including the losing trades — is available to
               subscribers before they commit. Our edge isn&apos;t hiding drawdowns. It&apos;s
@@ -83,7 +83,7 @@ export function PerformanceSection() {
                       prefersReduced={prefersReduced}
                     />
                   </span>
-                  <span className="text-navy text-sm uppercase tracking-widest font-bold">
+                  <span className="text-ivory-text text-sm uppercase tracking-widest font-bold">
                     {stat.label}
                   </span>
                 </motion.div>
@@ -98,14 +98,14 @@ export function PerformanceSection() {
             viewport={{ once: true }}
             transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="bg-white border border-ivory-warm rounded-2xl overflow-hidden shadow-md">
+            <div className="bg-navy-surface border border-navy-border rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="bg-ivory-warm">
+                  <tr className="bg-navy-border/60">
                     {["Bot", "Market", "Trades", "Win Rate", "Best Mo.", "Worst Mo.", "Total"].map((col) => (
                       <th
                         key={col}
-                        className="text-navy font-bold text-xs uppercase tracking-wider font-mono px-4 py-3.5 text-left first:pl-5"
+                        className="text-muted font-bold text-xs uppercase tracking-wider font-mono px-4 py-3.5 text-left first:pl-5"
                       >
                         {col}
                       </th>
@@ -116,14 +116,14 @@ export function PerformanceSection() {
                   {bots.map((bot, i) => (
                     <tr
                       key={bot.id}
-                      className={`transition-colors hover:bg-cardinal-red/5 ${i % 2 === 0 ? "bg-white" : "bg-ivory/60"}`}
+                      className={`transition-colors hover:bg-cardinal-red/8 ${i % 2 === 0 ? "bg-transparent" : "bg-white/3"}`}
                     >
-                      <td className="px-4 py-3.5 pl-5 font-bold text-navy font-mono text-xs whitespace-nowrap">
+                      <td className="px-4 py-3.5 pl-5 font-bold text-ivory-text font-mono text-xs whitespace-nowrap">
                         {bot.name.replace("Cardinal ", "")}
                       </td>
                       <td className="px-4 py-3.5 text-muted font-mono text-xs">{bot.market}</td>
-                      <td className="px-4 py-3.5 text-navy font-mono text-xs">{bot.totalTrades}</td>
-                      <td className="px-4 py-3.5 text-navy font-mono text-xs font-bold">{bot.winRate}%</td>
+                      <td className="px-4 py-3.5 text-ivory-text font-mono text-xs">{bot.totalTrades}</td>
+                      <td className="px-4 py-3.5 text-ivory-text font-mono text-xs font-bold">{bot.winRate}%</td>
                       <td className="px-4 py-3.5 font-mono text-xs font-bold text-gain">{bot.bestMonth}</td>
                       <td className="px-4 py-3.5 font-mono text-xs font-bold text-loss">{bot.worstMonth}</td>
                       <td className="px-4 py-3.5 font-mono text-xs font-bold text-gain">{bot.overallReturn}</td>

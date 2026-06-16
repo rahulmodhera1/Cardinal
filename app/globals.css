@@ -1,36 +1,34 @@
 @import "tailwindcss";
 
 @theme {
+  /* ─── Brand ───────────────────────────────────────────── */
   --color-cardinal-red: #B22222;
   --color-cardinal-red-dark: #8B1A1A;
-  --color-cardinal-red-mid: #C0392B;
-  --color-navy: #1B2A4A;
-  --color-navy-deep: #0F1E35;
-  --color-navy-surface: #1E3155;
-  --color-navy-border: #2A4070;
-  --color-ivory: #F5F0E8;
-  --color-ivory-warm: #EDE7D9;
-  --color-ivory-text: #F0EAD6;
-  --color-muted: #A8A09A;
-  --color-gain: #2E7D52;
-  --color-gain-light: #4CAF80;
-  --color-loss: #8B4040;
+  --color-cardinal-red-mid: #CC2222;
+
+  /* ─── Dark / black palette ────────────────────────────── */
+  --color-navy: #E0E0E0;           /* remapped: light text used on dark sections  */
+  --color-navy-deep: #000000;      /* pure black — main bg                        */
+  --color-navy-surface: #0D0D0D;   /* card / panel bg                             */
+  --color-navy-border: #1C1C1C;    /* borders                                     */
+
+  /* ─── "Ivory" remapped to dark alternates ─────────────── */
+  --color-ivory: #080808;          /* alternate-section bg                        */
+  --color-ivory-warm: #111111;     /* slightly lighter alternate                  */
+  --color-ivory-text: #FFFFFF;     /* primary text — pure white                   */
+
+  /* ─── Other ───────────────────────────────────────────── */
+  --color-muted: #666666;
+  --color-gain: #22C55E;
+  --color-gain-light: #4ADE80;
+  --color-loss: #EF4444;
+
   --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --cardinal-red: #B22222;
   --cardinal-red-dark: #8B1A1A;
-  --navy: #1B2A4A;
-  --navy-deep: #0F1E35;
-  --navy-surface: #1E3155;
-  --navy-border: #2A4070;
-  --ivory: #F5F0E8;
-  --ivory-warm: #EDE7D9;
-  --ivory-text: #F0EAD6;
-  --gain: #2E7D52;
-  --gain-light: #4CAF80;
-  --loss: #8B4040;
 }
 
 /* ─── Ticker ─────────────────────────────────────────── */
@@ -60,37 +58,9 @@
 /* ─── Hero grid bg ───────────────────────────────────── */
 .chart-grid-bg {
   background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    linear-gradient(rgba(178,34,34,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(178,34,34,0.04) 1px, transparent 1px);
   background-size: 40px 40px;
-}
-
-/* ─── Floating glow orbs ─────────────────────────────── */
-@keyframes glow-drift-1 {
-  0%,100% { transform: translate(0,   0)   scale(1);    opacity: 0.55; }
-  33%      { transform: translate(60px,-50px) scale(1.08); opacity: 0.75; }
-  66%      { transform: translate(-30px,30px) scale(0.93); opacity: 0.45; }
-}
-@keyframes glow-drift-2 {
-  0%,100% { transform: translate(0,   0)   scale(1);    opacity: 0.40; }
-  33%      { transform: translate(-40px,40px) scale(1.06); opacity: 0.60; }
-  66%      { transform: translate(50px,-20px) scale(0.95); opacity: 0.30; }
-}
-.hero-orb-1 {
-  position: absolute;
-  width: 700px; height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(178,34,34,0.09) 0%, transparent 65%);
-  animation: glow-drift-1 12s ease-in-out infinite;
-  pointer-events: none;
-}
-.hero-orb-2 {
-  position: absolute;
-  width: 500px; height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(178,34,34,0.06) 0%, transparent 65%);
-  animation: glow-drift-2 16s ease-in-out infinite;
-  pointer-events: none;
 }
 
 /* ─── Shimmer gradient text ──────────────────────────── */
@@ -99,7 +69,7 @@
   100% { background-position:  200% center; }
 }
 .text-shimmer-red {
-  background: linear-gradient(90deg, #8B1A1A 0%, #B22222 25%, #E84040 50%, #B22222 75%, #8B1A1A 100%);
+  background: linear-gradient(90deg, #8B1A1A 0%, #B22222 25%, #FF3333 50%, #B22222 75%, #8B1A1A 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -112,7 +82,7 @@
   transition: box-shadow 0.3s ease, transform 0.2s ease, background-color 0.2s ease;
 }
 .btn-glow:hover {
-  box-shadow: 0 0 24px rgba(178,34,34,0.55), 0 0 48px rgba(178,34,34,0.2), 0 4px 16px rgba(0,0,0,0.35);
+  box-shadow: 0 0 28px rgba(178,34,34,0.7), 0 0 60px rgba(178,34,34,0.25), 0 4px 16px rgba(0,0,0,0.5);
 }
 
 /* ─── Card glow border ───────────────────────────────── */
@@ -120,7 +90,7 @@
   transition: box-shadow 0.3s ease, transform 0.25s ease, border-color 0.25s ease;
 }
 .card-glow:hover {
-  box-shadow: 0 16px 48px rgba(0,0,0,0.25), 0 0 32px rgba(178,34,34,0.1), 0 0 0 1px rgba(178,34,34,0.35);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6), 0 0 40px rgba(178,34,34,0.15), 0 0 0 1px rgba(178,34,34,0.4);
 }
 
 /* ─── Animated gradient border (recommended pricing) ─── */
@@ -130,7 +100,7 @@
   100% { background-position: 0%   50%; }
 }
 .animated-border {
-  background: linear-gradient(135deg, #B22222, #E84040, #8B1A1A, #C0392B, #B22222);
+  background: linear-gradient(135deg, #B22222, #FF3333, #8B1A1A, #CC2222, #B22222);
   background-size: 300% 300%;
   animation: border-spin 4s ease infinite;
   padding: 2px;
@@ -148,35 +118,25 @@
   50%      { background-position: 100% 50%; }
 }
 .cta-bg-animate {
-  background: linear-gradient(135deg, #B22222, #8B1A1A, #C0392B, #A01A1A, #B22222);
+  background: linear-gradient(135deg, #B22222, #7a0f0f, #CC2222, #8B1A1A, #B22222);
   background-size: 300% 300%;
   animation: cta-gradient 6s ease infinite;
 }
 
-/* ─── Glass card ─────────────────────────────────────── */
+/* ─── Glass card (hero bot card) ─────────────────────── */
 .glass-card {
-  background: rgba(30, 49, 85, 0.55);
+  background: rgba(10, 0, 0, 0.7);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(42, 64, 112, 0.7);
-}
-
-/* ─── Noise overlay (subtle) ─────────────────────────── */
-.noise-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.4;
+  border: 1px solid rgba(178, 34, 34, 0.35);
 }
 
 /* ─── Base ───────────────────────────────────────────── */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  background-color: #0F1E35;
-  color: #F0EAD6;
+  background-color: #000000;
+  color: #FFFFFF;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
