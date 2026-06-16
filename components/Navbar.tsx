@@ -34,17 +34,15 @@ export function Navbar() {
 
         {/* Logo */}
         <a href="#" className="flex-shrink-0">
-          <div className="bg-white rounded-lg px-3 py-1.5">
-            <Image
-              src="/logo.png"
-              alt="Cardinal Capital Markets"
-              width={1408}
-              height={768}
-              priority
-              className="w-auto"
-              style={{ height: "44px" }}
-            />
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Cardinal Capital Markets"
+            width={1408}
+            height={768}
+            priority
+            className="w-auto"
+            style={{ height: "48px", mixBlendMode: "screen" }}
+          />
         </a>
 
         {/* Desktop links */}
