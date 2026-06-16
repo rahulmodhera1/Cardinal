@@ -32,7 +32,9 @@ export function WhyCardinal() {
 
   return (
     <section className="relative py-24">
-      <div className="max-w-7xl mx-auto px-6">
+      {/* Smooth blend from the hero's black into the ambient background */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-72 z-0 bg-gradient-to-b from-black via-black/70 to-transparent" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* Eyebrow */}
         <p className="font-mono text-xs tracking-widest uppercase text-cardinal-red text-center mb-4">
           The Problem with Manual Trading
