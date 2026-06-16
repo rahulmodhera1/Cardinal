@@ -24,35 +24,37 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-navy-deep/95 backdrop-blur-md border-b border-navy-border shadow-lg"
+          ? "bg-navy-deep/90 backdrop-blur-xl border-b border-navy-border/60 shadow-2xl shadow-black/30"
           : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo — cream pill so it sits cleanly on dark bg */}
         <a href="#" className="flex-shrink-0">
-          <Image
-            src="/logo.svg"
-            alt="Cardinal Capital Markets"
-            width={180}
-            height={50}
-            priority
-            className="h-10 w-auto"
-          />
+          <div className="bg-ivory rounded-xl px-3 py-1.5 shadow-sm">
+            <Image
+              src="/logo.png"
+              alt="Cardinal Capital Markets"
+              width={160}
+              height={44}
+              priority
+              className="h-9 w-auto"
+            />
+          </div>
         </a>
 
-        {/* Desktop nav links */}
+        {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="relative text-ivory-text/80 hover:text-ivory-text text-sm font-medium tracking-wide transition-colors group"
+              className="relative text-ivory-text/75 hover:text-ivory-text text-sm font-semibold tracking-wide transition-colors duration-200 group"
             >
               {link.label}
-              <span className="absolute bottom-0 left-0 w-0 h-px bg-cardinal-red transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-gradient-to-r from-cardinal-red to-cardinal-red-mid transition-all duration-300 group-hover:w-full" />
             </a>
           ))}
         </div>
@@ -61,13 +63,13 @@ export function Navbar() {
         <div className="hidden md:flex">
           <a
             href="#pricing"
-            className="bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text text-sm font-semibold px-6 py-2.5 rounded-full transition-colors duration-200"
+            className="btn-glow bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text text-sm font-bold px-6 py-2.5 rounded-full"
           >
             Get Access
           </a>
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <button
@@ -85,7 +87,7 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-ivory-text/80 hover:text-ivory-text text-lg font-medium transition-colors"
+                  className="text-ivory-text/80 hover:text-ivory-text text-lg font-semibold transition-colors"
                 >
                   {link.label}
                 </a>
@@ -93,7 +95,7 @@ export function Navbar() {
               <a
                 href="#pricing"
                 onClick={() => setOpen(false)}
-                className="mt-4 bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text font-semibold px-6 py-3 rounded-full text-center transition-colors"
+                className="mt-4 bg-cardinal-red hover:bg-cardinal-red-dark text-ivory-text font-bold px-6 py-3 rounded-full text-center transition-colors"
               >
                 Get Access
               </a>

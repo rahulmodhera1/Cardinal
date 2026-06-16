@@ -57,7 +57,7 @@ export function HowItWorks() {
                   delay: i * 0.15,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="relative z-10 bg-navy-surface border border-navy-border rounded-2xl p-8"
+                className="relative z-10 bg-navy-surface border border-navy-border rounded-2xl p-8 hover:border-cardinal-red/40 hover:shadow-lg hover:shadow-cardinal-red/10 transition-all duration-300"
               >
                 <div className="flex justify-between items-start mb-6">
                   <Icon className="w-8 h-8 text-cardinal-red" />
