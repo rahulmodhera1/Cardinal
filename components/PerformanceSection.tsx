@@ -99,7 +99,8 @@ export function PerformanceSection() {
             transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="bg-navy-surface border border-navy-border rounded-2xl overflow-hidden shadow-2xl shadow-black/60">
-              <table className="w-full text-sm">
+              <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-sm">
                 <thead>
                   <tr className="bg-navy-border/60">
                     {["Bot", "Market", "Trades", "Win Rate", "Best Mo.", "Worst Mo.", "Total"].map((col) => (
@@ -131,6 +132,7 @@ export function PerformanceSection() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </motion.div>
         </div>

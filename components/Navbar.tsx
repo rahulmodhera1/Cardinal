@@ -30,10 +30,10 @@ export function Navbar() {
           : "bg-black"
       }`}
     >
-      <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center gap-6">
+      <nav className="w-full pl-3 pr-4 sm:pl-4 sm:pr-6 lg:pr-8 h-16 sm:h-20 flex items-center gap-4 sm:gap-6">
 
         {/* Left: logo + wordmark */}
-        <a href="#" className="flex items-center gap-4 flex-shrink-0">
+        <a href="#" className="flex items-center gap-2.5 sm:gap-4 flex-shrink-0 min-w-0">
           <Image
             src="/cardinal-bird.png"
             alt="Cardinal Capital Markets"
@@ -41,18 +41,18 @@ export function Navbar() {
             height={390}
             priority
             className="w-auto flex-shrink-0"
-            style={{ height: "54px", transform: "translateY(-5px)" }}
+            style={{ height: "clamp(38px, 8vw, 54px)", transform: "translateY(-4px)" }}
           />
-          <div className="flex flex-col justify-center leading-tight">
+          <div className="flex flex-col justify-center leading-tight min-w-0">
             <span
-              className="font-black uppercase tracking-widest text-white"
-              style={{ fontSize: "1.45rem", letterSpacing: "0.12em" }}
+              className="font-black uppercase text-white whitespace-nowrap"
+              style={{ fontSize: "clamp(1.05rem, 4.2vw, 1.45rem)", letterSpacing: "0.12em" }}
             >
               Cardinal
             </span>
             <span
-              className="font-semibold uppercase tracking-[0.22em] text-cardinal-red"
-              style={{ fontSize: "0.6rem" }}
+              className="font-semibold uppercase text-cardinal-red whitespace-nowrap"
+              style={{ fontSize: "clamp(0.46rem, 1.7vw, 0.6rem)", letterSpacing: "0.2em" }}
             >
               Professional Trading Solutions
             </span>
