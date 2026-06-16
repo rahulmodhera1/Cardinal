@@ -30,23 +30,39 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4">
 
-        {/* Logo */}
-        <a href="#" className="flex-shrink-0">
+        {/* Banner: bird logo + metallic tagline */}
+        <a href="#" className="flex items-center gap-5 min-w-0 flex-shrink">
           <Image
             src="/cardinal-logo.png"
             alt="Cardinal Capital Markets"
             width={729}
             height={660}
             priority
-            className="w-auto"
-            style={{ height: "60px" }}
+            className="w-auto flex-shrink-0"
+            style={{ height: "66px" }}
           />
+          <span
+            className="hidden xl:block font-serif uppercase whitespace-nowrap select-none"
+            style={{
+              fontSize: "1.6rem",
+              letterSpacing: "0.06em",
+              backgroundImage:
+                "linear-gradient(180deg,#f7f7f7 0%,#ffffff 16%,#b9b9b9 45%,#6d6d6d 51%,#cfcfcf 57%,#ffffff 82%,#cccccc 100%)",
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+              textShadow: "0 1px 2px rgba(0,0,0,0.45)",
+            }}
+          >
+            Swing Trading. Automated. Tested.
+          </span>
         </a>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-8 flex-shrink-0">
           {navLinks.map((link) => (
             <a
               key={link.label}
