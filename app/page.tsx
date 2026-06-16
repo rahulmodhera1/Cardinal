@@ -13,23 +13,21 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      {/* Navbar is sticky (in normal flow), so the ticker naturally sits
+          flush right after it — no overlap, no gap, no magic padding. */}
       <Navbar />
-      {/* Push content below fixed navbar (h-20 = 80px) so the ticker sits
-          flush right beneath it — no overlap, no gap */}
-      <div className="pt-20">
-        <TickerTape />
-        <main>
-          <Hero />
-          <WhyCardinal />
-          <HowItWorks />
-          <BotsSection />
-          <PricingSection />
-          <PerformanceSection />
-          <FAQ />
-          <CTABanner />
-        </main>
-        <Footer />
-      </div>
+      <TickerTape />
+      <main>
+        <Hero />
+        <WhyCardinal />
+        <HowItWorks />
+        <BotsSection />
+        <PricingSection />
+        <PerformanceSection />
+        <FAQ />
+        <CTABanner />
+      </main>
+      <Footer />
     </>
   );
 }

@@ -24,10 +24,10 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-black/85 backdrop-blur-xl border-b border-white/8 shadow-2xl shadow-black/50"
-          : "bg-transparent"
+          : "bg-black"
       }`}
     >
       <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center gap-6">
