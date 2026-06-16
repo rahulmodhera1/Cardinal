@@ -30,10 +30,10 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center justify-between gap-4">
+      <nav className="w-full pl-4 pr-6 lg:pr-8 h-20 flex items-center justify-between gap-6">
 
-        {/* Banner: bird logo + warm metallic tagline */}
-        <a href="#" className="flex items-center gap-4 min-w-0 flex-shrink">
+        {/* Left: logo + wordmark */}
+        <a href="#" className="flex items-center gap-4 flex-shrink-0">
           <Image
             src="/cardinal-logo.png"
             alt="Cardinal Capital Markets"
@@ -41,24 +41,22 @@ export function Navbar() {
             height={660}
             priority
             className="w-auto flex-shrink-0"
-            style={{ height: "66px" }}
+            style={{ height: "60px" }}
           />
-          <span
-            className="hidden lg:block font-serif uppercase whitespace-nowrap select-none"
-            style={{
-              fontSize: "1.6rem",
-              letterSpacing: "0.06em",
-              backgroundImage:
-                "linear-gradient(180deg,#fff6ee 0%,#ffe7d2 16%,#e0a276 44%,#9c2b22 51%,#d99a6c 57%,#fff1e3 82%,#e6b389 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
-              textShadow: "0 1px 2px rgba(0,0,0,0.5)",
-            }}
-          >
-            Cardinal Trading.
-          </span>
+          <div className="flex flex-col justify-center leading-tight">
+            <span
+              className="font-black uppercase tracking-widest text-white"
+              style={{ fontSize: "1.45rem", letterSpacing: "0.12em" }}
+            >
+              Cardinal
+            </span>
+            <span
+              className="font-semibold uppercase tracking-[0.22em] text-cardinal-red"
+              style={{ fontSize: "0.6rem" }}
+            >
+              Professional Trading Solutions
+            </span>
+          </div>
         </a>
 
         {/* Desktop links */}
