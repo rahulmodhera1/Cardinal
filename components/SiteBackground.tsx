@@ -1,5 +1,5 @@
 // Fixed, full-page ambient background: red radial glows + faint grid,
-// plus slow-drifting orbs and gently rising particles for subtle motion.
+// plus slow-drifting soft orbs for subtle motion.
 // Sits behind all content (-z-10); transparent sections reveal it.
 
 const orbs = [
@@ -8,20 +8,6 @@ const orbs = [
   { left: "60%", top: "52%", size: 440, color: "rgba(139,26,26,0.16)", blur: 65, anim: "drift-c", dur: 35, delay: 1   },
   { left: "16%", top: "70%", size: 320, color: "rgba(178,34,34,0.14)", blur: 50, anim: "drift-b", dur: 28, delay: 3   },
   { left: "44%", top: "30%", size: 260, color: "rgba(204,34,34,0.11)", blur: 45, anim: "drift-a", dur: 33, delay: 1.5 },
-];
-
-// Hardcoded so SSR and client render identically (no hydration mismatch).
-const particles = [
-  { left: "12%", top: "30%", size: 3, dur: 14, delay: 0   },
-  { left: "23%", top: "70%", size: 2, dur: 18, delay: 4   },
-  { left: "34%", top: "45%", size: 4, dur: 16, delay: 7   },
-  { left: "48%", top: "78%", size: 2, dur: 20, delay: 2   },
-  { left: "57%", top: "25%", size: 3, dur: 15, delay: 9   },
-  { left: "66%", top: "60%", size: 2, dur: 19, delay: 5   },
-  { left: "75%", top: "38%", size: 4, dur: 17, delay: 11  },
-  { left: "84%", top: "72%", size: 3, dur: 22, delay: 3   },
-  { left: "91%", top: "48%", size: 2, dur: 16, delay: 8   },
-  { left: "5%",  top: "55%", size: 3, dur: 21, delay: 6   },
 ];
 
 export function SiteBackground() {
@@ -71,23 +57,6 @@ export function SiteBackground() {
             background: `radial-gradient(circle, ${o.color}, transparent 70%)`,
             filter: `blur(${o.blur}px)`,
             animation: `${o.anim} ${o.dur}s ease-in-out ${o.delay}s infinite`,
-          }}
-        />
-      ))}
-
-      {/* Gently rising particles */}
-      {particles.map((p, i) => (
-        <span
-          key={`pt-${i}`}
-          className="bg-particle absolute rounded-full"
-          style={{
-            left: p.left,
-            top: p.top,
-            width: p.size,
-            height: p.size,
-            background: "rgba(220,80,80,0.9)",
-            boxShadow: "0 0 6px rgba(204,34,34,0.8)",
-            animation: `particle-rise ${p.dur}s linear ${p.delay}s infinite`,
           }}
         />
       ))}
