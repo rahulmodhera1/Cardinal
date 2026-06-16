@@ -3,11 +3,11 @@
 // Sits behind all content (-z-10); transparent sections reveal it.
 
 const orbs = [
-  { left: "8%",  top: "14%", size: 360, color: "rgba(178,34,34,0.20)", blur: 50, anim: "drift-a", dur: 26, delay: 0   },
-  { left: "78%", top: "10%", size: 300, color: "rgba(204,34,34,0.15)", blur: 55, anim: "drift-b", dur: 31, delay: 2   },
-  { left: "60%", top: "52%", size: 440, color: "rgba(139,26,26,0.16)", blur: 65, anim: "drift-c", dur: 35, delay: 1   },
-  { left: "16%", top: "70%", size: 320, color: "rgba(178,34,34,0.14)", blur: 50, anim: "drift-b", dur: 28, delay: 3   },
-  { left: "44%", top: "30%", size: 260, color: "rgba(204,34,34,0.11)", blur: 45, anim: "drift-a", dur: 33, delay: 1.5 },
+  { left: "10%", top: "16%", size: 320, color: "rgba(178,34,34,0.32)", blur: 45, anim: "drift-a", dur: 18, delay: 0   },
+  { left: "76%", top: "12%", size: 280, color: "rgba(204,34,34,0.26)", blur: 50, anim: "drift-b", dur: 22, delay: 1.5 },
+  { left: "58%", top: "50%", size: 380, color: "rgba(139,26,26,0.28)", blur: 55, anim: "drift-c", dur: 24, delay: 0.8 },
+  { left: "18%", top: "68%", size: 300, color: "rgba(178,34,34,0.26)", blur: 45, anim: "drift-b", dur: 20, delay: 2.5 },
+  { left: "46%", top: "30%", size: 240, color: "rgba(204,34,34,0.22)", blur: 40, anim: "drift-a", dur: 21, delay: 1   },
 ];
 
 export function SiteBackground() {

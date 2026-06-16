@@ -151,16 +151,16 @@ body {
 }
 @keyframes drift-a {
   0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(38px, -55px); }
+  50%      { transform: translate(110px, -130px); }
 }
 @keyframes drift-b {
   0%, 100% { transform: translate(0, 0); }
-  50%      { transform: translate(-46px, 44px); }
+  50%      { transform: translate(-120px, 100px); }
 }
 @keyframes drift-c {
   0%   { transform: translate(0, 0); }
-  33%  { transform: translate(34px, 30px); }
-  66%  { transform: translate(-30px, -24px); }
+  33%  { transform: translate(95px, 80px); }
+  66%  { transform: translate(-85px, -70px); }
   100% { transform: translate(0, 0); }
 }
 @media (prefers-reduced-motion: reduce) {
