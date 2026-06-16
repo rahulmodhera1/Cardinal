@@ -60,7 +60,7 @@ export function Navbar() {
         </a>
 
         {/* Center: nav links spread across the open space */}
-        <div className="hidden md:flex flex-1 items-center justify-center gap-10 lg:gap-14">
+        <div className="hidden md:flex flex-1 items-center justify-between px-8 lg:px-20 xl:px-28">
           {navLinks.map((link) => (
             <a
               key={link.label}
