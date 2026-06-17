@@ -52,12 +52,13 @@ export function HowItWorks() {
                 initial={{ opacity: 0, y: prefersReduced ? 0 : 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                whileHover={prefersReduced ? {} : { y: -10, scale: 1.02, transition: { duration: 0.25, ease: "easeOut" } }}
                 transition={{
                   duration: prefersReduced ? 0 : 0.5,
                   delay: i * 0.15,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="relative z-10 bg-navy-surface border border-navy-border rounded-2xl p-8 hover:border-cardinal-red/40 hover:shadow-lg hover:shadow-cardinal-red/10 transition-all duration-300"
+                className="relative z-10 bg-navy-surface border border-navy-border rounded-2xl p-8 hover:border-cardinal-red/40 hover:shadow-lg hover:shadow-cardinal-red/10 transition-colors duration-300"
               >
                 <div className="flex justify-between items-start mb-6">
                   <Icon className="w-8 h-8 text-cardinal-red" />
