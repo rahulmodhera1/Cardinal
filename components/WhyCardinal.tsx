@@ -4,18 +4,28 @@ import { motion, useReducedMotion } from "framer-motion";
 import { X, CheckCircle } from "lucide-react";
 
 const problems = [
-  "Watching charts for hours only to miss the entry",
-  "Emotional decisions that override your own rules",
-  "Strategies that work on paper, fail in real markets",
-  "No time to monitor positions during market hours",
+  "Hours of screen time, and you still miss the entry.",
+  "Emotional decisions that override your own rules.",
+  "Strategies that test well on paper but fail in live markets.",
+  "No time to monitor positions through the trading day.",
 ];
 
 const solutions = [
-  "Bots execute the moment your setup triggers — no hesitation",
-  "Every strategy is backtested on historical data, then forward-tested live",
-  "Subscribe to the bots that fit your market and risk tolerance",
-  "Track performance transparently — we show you the drawdowns too",
+  "Cardinal enters and exits automatically the moment its conditions are met.",
+  "The strategy is built and backtested on historical market data.",
+  "Every position is sized and protected with an automatic stop loss.",
+  "Every trade is visible in full, so you retain complete oversight of your account.",
 ];
+
+const cardHover = {
+  rest: { y: 0, boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 4px 24px rgba(0,0,0,0.4)" },
+  hover: { y: -8, boxShadow: "0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(178,34,34,0.18), 0 0 0 1px rgba(178,34,34,0.45)" },
+};
+
+const cardHoverSolution = {
+  rest: { y: 0, boxShadow: "0 0 0 1px rgba(178,34,34,0.20), 0 4px 24px rgba(0,0,0,0.4)" },
+  hover: { y: -8, boxShadow: "0 20px 60px rgba(0,0,0,0.7), 0 0 50px rgba(178,34,34,0.25), 0 0 0 1px rgba(178,34,34,0.55)" },
+};
 
 export function WhyCardinal() {
   const prefersReduced = useReducedMotion();
@@ -32,10 +42,8 @@ export function WhyCardinal() {
 
   return (
     <section className="relative py-24">
-      {/* Smooth blend from the hero's black into the ambient background */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-72 z-0 bg-gradient-to-b from-black via-black/70 to-transparent" />
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Eyebrow */}
         <p className="font-mono text-xs tracking-widest uppercase text-cardinal-red text-center mb-4">
           The Problem with Manual Trading
         </p>
@@ -46,7 +54,14 @@ export function WhyCardinal() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
           {/* Left — Problems */}
           <motion.div {...slideIn("left")}>
-            <div className="bg-navy-surface border border-navy-border rounded-2xl p-8">
+            <motion.div
+              initial="rest"
+              whileHover={prefersReduced ? "rest" : "hover"}
+              variants={cardHover}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-navy-surface rounded-2xl p-8 h-full cursor-default"
+              style={{ willChange: "transform" }}
+            >
               <h3 className="text-ivory-text font-semibold text-xl mb-6">
                 Manual trading is exhausting
               </h3>
@@ -58,14 +73,21 @@ export function WhyCardinal() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Right — Solutions */}
           <motion.div {...slideIn("right")}>
-            <div className="bg-navy-surface border border-cardinal-red/20 rounded-2xl p-8">
+            <motion.div
+              initial="rest"
+              whileHover={prefersReduced ? "rest" : "hover"}
+              variants={cardHoverSolution}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-navy-surface rounded-2xl p-8 h-full cursor-default"
+              style={{ willChange: "transform", border: "1px solid rgba(178,34,34,0.20)" }}
+            >
               <h3 className="text-ivory-text font-semibold text-xl mb-6">
-                A systematic edge, running 24/5
+                A systematic edge, every market day
               </h3>
               <ul className="space-y-4">
                 {solutions.map((item, i) => (
@@ -75,7 +97,7 @@ export function WhyCardinal() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
