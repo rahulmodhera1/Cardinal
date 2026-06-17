@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import type { PricingTier } from "@/lib/pricing";
 
@@ -13,13 +13,12 @@ const included = [
 
 interface PricingCardProps {
   tier: PricingTier;
-  annual: boolean;
   delay?: number;
 }
 
-export function PricingCard({ tier, annual, delay = 0 }: PricingCardProps) {
+export function PricingCard({ tier, delay = 0 }: PricingCardProps) {
   const prefersReduced = useReducedMotion();
-  const price = annual ? tier.annualPrice : tier.monthlyPrice;
+  const price = tier.monthlyPrice;
 
   if (tier.comingSoon) {
     return (
@@ -34,7 +33,7 @@ export function PricingCard({ tier, annual, delay = 0 }: PricingCardProps) {
           {/* Blurred background content */}
           <div className="opacity-25 pointer-events-none select-none">
             <h3 className="text-ivory-text font-bold text-xl mb-2">{tier.name}</h3>
-            <div className="mb-6 mt-1" style={{ minHeight: "76px" }}>
+            <div className="mb-6 mt-1">
               <span className="font-mono text-5xl font-bold text-ivory-text">${price}</span>
               <span className="font-mono text-muted text-base ml-1">/mo</span>
             </div>
@@ -86,22 +85,9 @@ export function PricingCard({ tier, annual, delay = 0 }: PricingCardProps) {
 
       <h3 className="text-ivory-text font-bold text-xl mb-2">{tier.name}</h3>
 
-      <div className="mb-6 mt-1" style={{ minHeight: "76px" }}>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`${tier.name}-${annual ? "annual" : "monthly"}`}
-            initial={{ opacity: 0, y: prefersReduced ? 0 : -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: prefersReduced ? 0 : 10 }}
-            transition={{ duration: prefersReduced ? 0 : 0.22 }}
-          >
-            <span className="font-mono text-5xl font-bold text-ivory-text">${price}</span>
-            <span className="font-mono text-muted text-base ml-1">/mo</span>
-            {annual && (
-              <p className="font-mono text-xs text-gain-light mt-1">Billed annually</p>
-            )}
-          </motion.div>
-        </AnimatePresence>
+      <div className="mb-6 mt-1">
+        <span className="font-mono text-5xl font-bold text-ivory-text">${price}</span>
+        <span className="font-mono text-muted text-base ml-1">/mo</span>
       </div>
 
       <ul className="space-y-3 mb-6 flex-1">
