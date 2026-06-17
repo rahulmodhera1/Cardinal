@@ -74,6 +74,7 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
       transition={{ duration: prefersReduced ? 0 : 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
       className="relative"
       style={{ perspective: "1200px" }}
+      whileHover={prefersReduced ? {} : { y: -10, scale: 1.02, transition: { duration: 0.25, ease: "easeOut" } }}
     >
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
