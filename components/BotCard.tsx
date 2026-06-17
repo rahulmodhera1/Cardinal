@@ -22,14 +22,6 @@ const riskLabel: Record<string, string> = {
   Aggressive:   "text-cardinal-red",
 };
 
-function PlaceholderBadge() {
-  return (
-    <span className="font-mono text-[10px] uppercase tracking-widest text-amber-400/70 border border-amber-400/25 bg-amber-400/8 px-2 py-0.5 rounded-full">
-      Placeholder Data
-    </span>
-  );
-}
-
 export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
   const prefersReduced = useReducedMotion();
 
@@ -43,7 +35,7 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
         className="relative bg-navy-surface border border-navy-border rounded-2xl p-6 overflow-hidden"
       >
         {/* Dimmed overlay */}
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px] rounded-2xl z-10 flex flex-col items-center justify-center gap-3">
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-2xl z-10 flex flex-col items-center justify-center gap-3">
           <span className="font-mono text-xs uppercase tracking-widest text-muted">Coming Soon</span>
           <div className="w-8 h-px bg-cardinal-red/40" />
           <span className="text-muted/60 text-xs text-center px-6">This strategy is in development and will be available in a future release.</span>
@@ -86,18 +78,12 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
     >
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cardinal-red to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      <div className="flex items-center justify-between mb-1">
+      <div className="flex items-center justify-between mb-3">
         <h3 className="text-ivory-text font-bold text-lg leading-tight">{bot.name}</h3>
         <span className={`text-xs font-mono px-2.5 py-0.5 rounded-full ${marketBadge[bot.market]}`}>
           {bot.market}
         </span>
       </div>
-
-      {bot.placeholder && (
-        <div className="mb-3">
-          <PlaceholderBadge />
-        </div>
-      )}
 
       <div className="flex items-center gap-2 mb-4">
         <span
@@ -120,19 +106,19 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
 
       <div className="grid grid-cols-2 gap-3 mb-5">
         <div>
-          <div className="font-mono text-ivory-text font-bold text-xl">{bot.winRate}%</div>
+          <div className="font-mono text-ivory-text font-bold text-xl">{bot.placeholder ? "X" : `${bot.winRate}%`}</div>
           <div className="font-mono text-xs text-muted mt-0.5">Win Rate</div>
         </div>
         <div>
-          <div className="font-mono text-gain font-bold text-xl">+{bot.avgReturn}%</div>
+          <div className="font-mono text-gain font-bold text-xl">{bot.placeholder ? "X" : `+${bot.avgReturn}%`}</div>
           <div className="font-mono text-xs text-muted mt-0.5">Avg Return/Trade</div>
         </div>
         <div>
-          <div className="font-mono text-loss font-bold text-xl">{bot.maxDrawdown}%</div>
+          <div className="font-mono text-loss font-bold text-xl">{bot.placeholder ? "X" : `${bot.maxDrawdown}%`}</div>
           <div className="font-mono text-xs text-muted mt-0.5">Max Drawdown</div>
         </div>
         <div>
-          <div className="font-mono text-muted font-bold text-base mt-1">{bot.liveSince}</div>
+          <div className="font-mono text-muted font-bold text-base mt-1">{bot.placeholder ? "X" : bot.liveSince}</div>
           <div className="font-mono text-xs text-muted mt-0.5">Live Since</div>
         </div>
       </div>
