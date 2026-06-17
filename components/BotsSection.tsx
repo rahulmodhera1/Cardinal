@@ -19,7 +19,7 @@ export function BotsSection() {
           We don&apos;t hide the drawdowns.
         </p>
 
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {bots.map((bot, i) => (
             <BotCard key={bot.id} bot={bot} delay={i * 0.1} />
           ))}
