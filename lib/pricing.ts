@@ -7,6 +7,7 @@ export interface PricingTier {
   dashboard: string;
   support: string;
   recommended: boolean;
+  comingSoon?: boolean;
 }
 
 export const pricingTiers: PricingTier[] = [
@@ -17,8 +18,8 @@ export const pricingTiers: PricingTier[] = [
     bots: "1 bot",
     markets: "Equities only",
     dashboard: "Basic",
-    support: "Email",
-    recommended: false,
+    support: "Email · Meeting Calls",
+    recommended: true,
   },
   {
     name: "Pro",
@@ -28,7 +29,8 @@ export const pricingTiers: PricingTier[] = [
     markets: "Stocks + Options",
     dashboard: "Full analytics",
     support: "Priority email",
-    recommended: true,
+    recommended: false,
+    comingSoon: true,
   },
   {
     name: "Institutional",
@@ -39,5 +41,6 @@ export const pricingTiers: PricingTier[] = [
     dashboard: "Priority + API",
     support: "Dedicated manager",
     recommended: false,
+    comingSoon: true,
   },
 ];
