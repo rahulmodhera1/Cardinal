@@ -154,11 +154,11 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
             {bot.details && (
               <>
                 <p className="text-muted leading-relaxed text-sm mb-5">{bot.details.overview}</p>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-3">
                   {bot.details.stats.map((s) => (
-                    <div key={s.label} className="bg-white/4 border border-white/6 rounded-xl px-3 py-2.5">
-                      <div className="font-mono text-ivory-text font-bold text-sm">{s.value}</div>
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-0.5">{s.label}</div>
+                    <div key={s.label} className="bg-white/4 border border-white/6 rounded-xl px-4 py-3.5">
+                      <div className="font-mono text-ivory-text font-bold text-base">{s.value}</div>
+                      <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-1">{s.label}</div>
                     </div>
                   ))}
                 </div>
@@ -168,9 +168,9 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
 
           <button
             onClick={() => setFlipped(false)}
-            className="mt-5 w-full flex items-center justify-center gap-2 bg-cardinal-red/10 border border-cardinal-red/40 hover:bg-cardinal-red/20 hover:border-cardinal-red text-cardinal-red rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
+            className="mt-5 w-full flex items-center justify-center gap-2 border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
           >
-            <span style={{ fontSize: "1rem", lineHeight: 1 }}>←</span> Back
+            ← Back
           </button>
         </div>
       </motion.div>
