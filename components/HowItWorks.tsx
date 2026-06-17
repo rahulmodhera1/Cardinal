@@ -1,26 +1,26 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Target, Zap, TrendingUp } from "lucide-react";
+import { MessageSquare, Zap, TrendingUp } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    icon: Target,
-    title: "Choose Your Bots",
-    body: "Browse our tested roster — equities, options, or futures. Filter by risk level, market type, and historical return profile.",
+    icon: MessageSquare,
+    title: "Get in Touch",
+    body: "Reach out to the Cardinal team. We walk you through how the system works, answer your questions, and confirm it is the right fit for you.",
   },
   {
     number: "02",
     icon: Zap,
     title: "Subscribe & Connect",
-    body: "Pick a plan. Link your broker account via our secure connection. Cardinal handles the rest — no manual configuration needed.",
+    body: "Select a subscription plan and securely link your brokerage account. Cardinal integrates directly — no manual setup or configuration required.",
   },
   {
     number: "03",
     icon: TrendingUp,
-    title: "Let Them Trade",
-    body: "Your subscribed bots monitor the market and execute trades automatically. Real-time alerts and a live performance dashboard keep you informed.",
+    title: "Let Money Printer Trade",
+    body: "Once connected, Money Printer monitors the market and executes every trade autonomously. Every position is logged and visible so you always have full oversight.",
   },
 ];
 

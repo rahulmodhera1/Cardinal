@@ -213,7 +213,7 @@ export function Hero() {
                 style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.8), transparent)" }}
               />
               <div className="flex items-center justify-between mb-4">
-                <span className="font-bold text-white text-lg tracking-tight">MoneyPrinter</span>
+                <span className="font-bold text-white text-lg tracking-tight">Money Printer</span>
                 <span className="flex items-center gap-1.5 bg-cardinal-red/20 border border-cardinal-red/60 text-cardinal-red text-xs font-mono px-2.5 py-1 rounded-full">
                   <span className="w-1.5 h-1.5 rounded-full bg-cardinal-red animate-pulse" />
                   LIVE
