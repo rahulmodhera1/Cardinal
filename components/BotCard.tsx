@@ -72,19 +72,16 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: prefersReduced ? 0 : 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      style={{ perspective: "1200px" }}
       className="relative"
+      style={{ perspective: "1200px" }}
     >
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transformStyle: "preserve-3d", position: "relative" }}
+        className="relative [transform-style:preserve-3d]"
       >
         {/* ── Front face ── */}
-        <div
-          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
-          className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 relative overflow-hidden"
-        >
+        <div className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 relative overflow-hidden [backface-visibility:hidden]">
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cardinal-red to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           <div className="flex items-center justify-between mb-3">
@@ -143,17 +140,7 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
         </div>
 
         {/* ── Back face ── */}
-        <div
-          style={{
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            transform: "rotateY(180deg)",
-            position: "absolute",
-            inset: 0,
-          }}
-          className="bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 flex flex-col justify-between"
-        >
-          {/* Top accent */}
+        <div className="absolute inset-0 bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)]">
           <div
             className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
             style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.8), transparent)" }}
