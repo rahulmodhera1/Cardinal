@@ -176,9 +176,9 @@ export function Hero() {
               {...fadeUp(0.44)}
               className="text-muted text-lg leading-relaxed max-w-xl"
             >
-              Cardinal gives you access to a suite of swing trading bots designed for
-              stocks, options, and futures — vetted through real market conditions
-              before you ever pay a dollar.
+              Cardinal is a swing-trading bot for stocks. You connect a brokerage account
+              and it handles the entries, exits, and risk automatically. You can see every
+              trade it makes, so you always know exactly what it is doing with your account.
             </motion.p>
 
             <motion.div {...fadeUp(0.56)} className="flex flex-wrap gap-4 mt-10">
