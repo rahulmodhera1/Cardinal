@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Sparkline } from "@/components/Sparkline";
 import type { Bot } from "@/lib/bots";
@@ -24,6 +25,7 @@ const riskLabel: Record<string, string> = {
 
 export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
   const prefersReduced = useReducedMotion();
+  const [flipped, setFlipped] = useState(false);
 
   if (bot.comingSoon) {
     return (
@@ -34,14 +36,11 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
         transition={{ duration: prefersReduced ? 0 : 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
         className="relative bg-navy-surface border border-navy-border rounded-2xl p-6 overflow-hidden"
       >
-        {/* Dimmed overlay */}
         <div className="absolute inset-0 bg-black/60 backdrop-blur-md rounded-2xl z-10 flex flex-col items-center justify-center gap-3">
           <span className="font-mono text-xs uppercase tracking-widest text-muted">Coming Soon</span>
           <div className="w-8 h-px bg-cardinal-red/40" />
           <span className="text-muted/60 text-xs text-center px-6">This strategy is in development and will be available in a future release.</span>
         </div>
-
-        {/* Blurred background content */}
         <div className="opacity-30 pointer-events-none select-none">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-ivory-text font-bold text-lg">{bot.name}</h3>
@@ -73,61 +72,146 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: prefersReduced ? 0 : 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={prefersReduced ? {} : { y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
-      className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 cursor-pointer relative overflow-hidden"
+      style={{ perspective: "1200px" }}
+      className="relative"
     >
-      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cardinal-red to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      <motion.div
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
+        style={{ transformStyle: "preserve-3d", position: "relative" }}
+      >
+        {/* ── Front face ── */}
+        <div
+          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+          className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 relative overflow-hidden"
+        >
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cardinal-red to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="text-ivory-text font-bold text-lg leading-tight">{bot.name}</h3>
-        <span className={`text-xs font-mono px-2.5 py-0.5 rounded-full ${marketBadge[bot.market]}`}>
-          {bot.market}
-        </span>
-      </div>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="text-ivory-text font-bold text-lg leading-tight">{bot.name}</h3>
+            <span className={`text-xs font-mono px-2.5 py-0.5 rounded-full ${marketBadge[bot.market]}`}>
+              {bot.market}
+            </span>
+          </div>
 
-      <div className="flex items-center gap-2 mb-4">
-        <span
-          className="w-2 h-2 rounded-full inline-block ring-2 ring-offset-1"
-          style={{ backgroundColor: riskDot[bot.risk] }}
-        />
-        <span className={`text-xs font-mono font-semibold ${riskLabel[bot.risk]}`}>{bot.risk}</span>
-      </div>
+          <div className="flex items-center gap-2 mb-4">
+            <span
+              className="w-2 h-2 rounded-full inline-block ring-2 ring-offset-1"
+              style={{ backgroundColor: riskDot[bot.risk] }}
+            />
+            <span className={`text-xs font-mono font-semibold ${riskLabel[bot.risk]}`}>{bot.risk}</span>
+          </div>
 
-      <div className="mb-5 rounded-xl overflow-hidden bg-white/5">
-        <Sparkline
-          data={bot.sparkline}
-          width={300}
-          height={60}
-          lineColor="#B22222"
-          fillColor="rgba(178,34,34,0.12)"
-          className="w-full"
-        />
-      </div>
+          <div className="mb-5 rounded-xl overflow-hidden bg-white/5">
+            <Sparkline
+              data={bot.sparkline}
+              width={300}
+              height={60}
+              lineColor="#B22222"
+              fillColor="rgba(178,34,34,0.12)"
+              className="w-full"
+            />
+          </div>
 
-      <div className="grid grid-cols-2 gap-3 mb-5">
-        <div>
-          <div className="font-mono text-ivory-text font-bold text-xl">{bot.placeholder ? "X" : `${bot.winRate}%`}</div>
-          <div className="font-mono text-xs text-muted mt-0.5">Win Rate</div>
+          <div className="grid grid-cols-2 gap-3 mb-5">
+            <div>
+              <div className="font-mono text-ivory-text font-bold text-xl">{bot.placeholder ? "X" : `${bot.winRate}%`}</div>
+              <div className="font-mono text-xs text-muted mt-0.5">Win Rate</div>
+            </div>
+            <div>
+              <div className="font-mono text-gain font-bold text-xl">{bot.placeholder ? "X" : `+${bot.avgReturn}%`}</div>
+              <div className="font-mono text-xs text-muted mt-0.5">Avg Return/Trade</div>
+            </div>
+            <div>
+              <div className="font-mono text-loss font-bold text-xl">{bot.placeholder ? "X" : `${bot.maxDrawdown}%`}</div>
+              <div className="font-mono text-xs text-muted mt-0.5">Max Drawdown</div>
+            </div>
+            <div>
+              <div className="font-mono text-muted font-bold text-base mt-1">{bot.placeholder ? "X" : bot.liveSince}</div>
+              <div className="font-mono text-xs text-muted mt-0.5">Live Since</div>
+            </div>
+          </div>
+
+          <div className="border-t border-navy-border mb-5" />
+
+          <button
+            onClick={() => setFlipped(true)}
+            className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
+          >
+            View Details
+          </button>
         </div>
-        <div>
-          <div className="font-mono text-gain font-bold text-xl">{bot.placeholder ? "X" : `+${bot.avgReturn}%`}</div>
-          <div className="font-mono text-xs text-muted mt-0.5">Avg Return/Trade</div>
-        </div>
-        <div>
-          <div className="font-mono text-loss font-bold text-xl">{bot.placeholder ? "X" : `${bot.maxDrawdown}%`}</div>
-          <div className="font-mono text-xs text-muted mt-0.5">Max Drawdown</div>
-        </div>
-        <div>
-          <div className="font-mono text-muted font-bold text-base mt-1">{bot.placeholder ? "X" : bot.liveSince}</div>
-          <div className="font-mono text-xs text-muted mt-0.5">Live Since</div>
-        </div>
-      </div>
 
-      <div className="border-t border-navy-border mb-5" />
+        {/* ── Back face ── */}
+        <div
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+            position: "absolute",
+            inset: 0,
+          }}
+          className="bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 overflow-hidden flex flex-col"
+        >
+          {/* Top accent */}
+          <div
+            className="absolute top-0 left-0 right-0 h-0.5"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.8), transparent)" }}
+          />
 
-      <button className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200">
-        View Details
-      </button>
+          <div className="mb-4">
+            <p className="font-mono text-[10px] uppercase tracking-widest text-cardinal-red mb-1">Strategy Overview</p>
+            <h3 className="text-ivory-text font-bold text-lg">{bot.name}</h3>
+          </div>
+
+          {bot.details && (
+            <div className="flex-1 overflow-y-auto space-y-4 pr-1 text-sm">
+              <p className="text-muted leading-relaxed text-xs">{bot.details.strategy}</p>
+
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-cardinal-red mb-2">Indicators Used</p>
+                <ul className="space-y-2">
+                  {bot.details.indicators.map((ind) => (
+                    <li key={ind.name} className="flex flex-col gap-0.5">
+                      <span className="font-mono text-xs font-bold text-ivory-text">{ind.name}</span>
+                      <span className="font-mono text-[11px] text-muted leading-snug">{ind.purpose}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 pt-1">
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Hold Time</p>
+                  <p className="font-mono text-xs text-ivory-text font-bold">{bot.details.holdTime}</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Risk / Trade</p>
+                  <p className="font-mono text-xs text-ivory-text font-bold">{bot.details.riskPerTrade}</p>
+                </div>
+              </div>
+
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Entry Rule</p>
+                <p className="font-mono text-[11px] text-muted leading-snug">{bot.details.entryRule}</p>
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Exit Rule</p>
+                <p className="font-mono text-[11px] text-muted leading-snug">{bot.details.exitRule}</p>
+              </div>
+            </div>
+          )}
+
+          <div className="border-t border-navy-border mt-4 pt-4">
+            <button
+              onClick={() => setFlipped(false)}
+              className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
+            >
+              ← Back
+            </button>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   );
 }

@@ -1,3 +1,17 @@
+export interface BotIndicator {
+  name: string;
+  purpose: string;
+}
+
+export interface BotDetails {
+  strategy: string;
+  indicators: BotIndicator[];
+  holdTime: string;
+  entryRule: string;
+  exitRule: string;
+  riskPerTrade: string;
+}
+
 export interface Bot {
   id: string;
   name: string;
@@ -15,6 +29,7 @@ export interface Bot {
   sparkline: number[];
   placeholder?: boolean;
   comingSoon?: boolean;
+  details?: BotDetails;
 }
 
 export const bots: Bot[] = [
@@ -35,6 +50,23 @@ export const bots: Bot[] = [
       "Swing momentum strategy on large-cap stocks. Targets 3–7 day holds on high-volume breakout setups.",
     sparkline: [100, 104, 101, 108, 106, 112, 110, 118, 115, 122, 119, 128],
     placeholder: true,
+    details: {
+      strategy:
+        "Momentum swing strategy targeting large-cap NYSE and NASDAQ equities. Scans for high-probability breakout setups using a multi-indicator confirmation stack before committing to any position.",
+      indicators: [
+        { name: "RSI (14)", purpose: "Entry timing — avoids overbought conditions above 70" },
+        { name: "EMA 20 / EMA 50", purpose: "Trend filter — only longs above both moving averages" },
+        { name: "MACD (12, 26, 9)", purpose: "Momentum confirmation before entry is triggered" },
+        { name: "Volume Profile", purpose: "Breakout validated by volume > 1.5× 20-day average" },
+        { name: "ATR (14)", purpose: "Dynamic position sizing and stop-loss placement" },
+      ],
+      holdTime: "3–7 trading days",
+      entryRule:
+        "Enters on confirmed breakout above resistance with RSI below 70, MACD bullish cross, and above-average volume.",
+      exitRule:
+        "Exits at a 2× ATR profit target or on momentum loss confirmed by MACD bearish cross.",
+      riskPerTrade: "1–2% of account per position",
+    },
   },
   {
     id: "theta",
