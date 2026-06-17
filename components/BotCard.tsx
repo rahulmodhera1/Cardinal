@@ -78,7 +78,7 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="relative [transform-style:preserve-3d] min-h-[440px]"
+        className="relative [transform-style:preserve-3d] min-h-[520px]"
       >
         {/* ── Front face ── */}
         <div className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 relative overflow-hidden [backface-visibility:hidden] h-full flex flex-col">
@@ -103,7 +103,7 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
             <Sparkline
               data={bot.sparkline}
               width={300}
-              height={60}
+              height={90}
               lineColor="#B22222"
               fillColor="rgba(178,34,34,0.12)"
               className="w-full"
@@ -141,37 +141,38 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
         </div>
 
         {/* ── Back face ── */}
-        <div className="absolute inset-0 bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 flex flex-col justify-between [backface-visibility:hidden] [transform:rotateY(180deg)]">
+        <div className="absolute inset-0 bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 flex flex-col [backface-visibility:hidden] [transform:rotateY(180deg)] overflow-hidden">
           <div
             className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
             style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.8), transparent)" }}
           />
 
-          <div>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-cardinal-red mb-1">Strategy Overview</p>
-            <h3 className="text-ivory-text font-bold text-lg mb-4">{bot.name}</h3>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-cardinal-red mb-1">Strategy Overview</p>
+          <h3 className="text-ivory-text font-bold text-lg mb-4">{bot.name}</h3>
 
-            {bot.details && (
-              <>
-                <p className="text-muted leading-relaxed text-sm mb-5">{bot.details.overview}</p>
-                <div className="grid grid-cols-2 gap-3">
-                  {bot.details.stats.map((s) => (
-                    <div key={s.label} className="bg-white/4 border border-white/6 rounded-xl px-4 py-3.5">
-                      <div className="font-mono text-ivory-text font-bold text-base">{s.value}</div>
-                      <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-1">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
+          {bot.details && (
+            <>
+              <p className="text-muted leading-relaxed text-sm mb-6">{bot.details.overview}</p>
+              <div className="grid grid-cols-2 gap-3 mb-6">
+                {bot.details.stats.map((s) => (
+                  <div key={s.label} className="bg-white/4 border border-white/6 rounded-xl px-4 py-4">
+                    <div className="font-mono text-ivory-text font-bold text-base">{s.value}</div>
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-1">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+
+          <div className="mt-auto">
+            <div className="border-t border-navy-border mb-5" />
+            <button
+              onClick={() => setFlipped(false)}
+              className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
+            >
+              ← Back
+            </button>
           </div>
-
-          <button
-            onClick={() => setFlipped(false)}
-            className="mt-5 w-full flex items-center justify-center gap-2 border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
-          >
-            ← Back
-          </button>
         </div>
       </motion.div>
     </motion.div>
