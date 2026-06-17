@@ -151,41 +151,39 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
             position: "absolute",
             inset: 0,
           }}
-          className="bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 overflow-hidden flex flex-col"
+          className="bg-navy-surface border border-cardinal-red/30 rounded-2xl p-6 flex flex-col justify-between"
         >
           {/* Top accent */}
           <div
-            className="absolute top-0 left-0 right-0 h-0.5"
+            className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
             style={{ background: "linear-gradient(90deg, transparent, rgba(178,34,34,0.8), transparent)" }}
           />
 
-          <div className="mb-4">
+          <div>
             <p className="font-mono text-[10px] uppercase tracking-widest text-cardinal-red mb-1">Strategy Overview</p>
-            <h3 className="text-ivory-text font-bold text-lg">{bot.name}</h3>
+            <h3 className="text-ivory-text font-bold text-lg mb-4">{bot.name}</h3>
+
+            {bot.details && (
+              <>
+                <p className="text-muted leading-relaxed text-sm mb-5">{bot.details.overview}</p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {bot.details.stats.map((s) => (
+                    <div key={s.label} className="bg-white/4 border border-white/6 rounded-xl px-3 py-2.5">
+                      <div className="font-mono text-ivory-text font-bold text-sm">{s.value}</div>
+                      <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-0.5">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
 
-          {bot.details && (
-            <div className="flex-1 flex flex-col justify-between">
-              <p className="text-muted leading-relaxed text-sm">{bot.details.overview}</p>
-              <div className="grid grid-cols-2 gap-3 mt-6">
-                {bot.details.stats.map((s) => (
-                  <div key={s.label} className="bg-white/4 rounded-xl px-3 py-2.5">
-                    <div className="font-mono text-ivory-text font-bold text-sm">{s.value}</div>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-0.5">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="border-t border-navy-border mt-4 pt-4">
-            <button
-              onClick={() => setFlipped(false)}
-              className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
-            >
-              ← Back
-            </button>
-          </div>
+          <button
+            onClick={() => setFlipped(false)}
+            className="mt-5 w-full flex items-center justify-center gap-2 bg-cardinal-red/10 border border-cardinal-red/40 hover:bg-cardinal-red/20 hover:border-cardinal-red text-cardinal-red rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
+          >
+            <span style={{ fontSize: "1rem", lineHeight: 1 }}>←</span> Back
+          </button>
         </div>
       </motion.div>
     </motion.div>
