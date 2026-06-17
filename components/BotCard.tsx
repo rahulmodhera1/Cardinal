@@ -78,10 +78,10 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: prefersReduced ? 0 : 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className="relative [transform-style:preserve-3d]"
+        className="relative [transform-style:preserve-3d] min-h-[440px]"
       >
         {/* ── Front face ── */}
-        <div className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 relative overflow-hidden [backface-visibility:hidden]">
+        <div className="card-glow group bg-navy-surface border border-navy-border rounded-2xl p-6 relative overflow-hidden [backface-visibility:hidden] h-full flex flex-col">
           <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cardinal-red to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
           <div className="flex items-center justify-between mb-3">
@@ -129,14 +129,15 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
             </div>
           </div>
 
-          <div className="border-t border-navy-border mb-5" />
-
-          <button
-            onClick={() => setFlipped(true)}
-            className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
-          >
-            View Details
-          </button>
+          <div className="mt-auto">
+            <div className="border-t border-navy-border mb-5" />
+            <button
+              onClick={() => setFlipped(true)}
+              className="w-full border border-white/15 text-white/80 hover:border-cardinal-red hover:text-cardinal-red hover:bg-cardinal-red/8 rounded-xl py-2.5 text-sm font-bold transition-all duration-200"
+            >
+              View Details
+            </button>
+          </div>
         </div>
 
         {/* ── Back face ── */}
