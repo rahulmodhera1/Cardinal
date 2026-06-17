@@ -165,39 +165,15 @@ export function BotCard({ bot, delay = 0 }: { bot: Bot; delay?: number }) {
           </div>
 
           {bot.details && (
-            <div className="flex-1 overflow-y-auto space-y-4 pr-1 text-sm">
-              <p className="text-muted leading-relaxed text-xs">{bot.details.strategy}</p>
-
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-cardinal-red mb-2">Indicators Used</p>
-                <ul className="space-y-2">
-                  {bot.details.indicators.map((ind) => (
-                    <li key={ind.name} className="flex flex-col gap-0.5">
-                      <span className="font-mono text-xs font-bold text-ivory-text">{ind.name}</span>
-                      <span className="font-mono text-[11px] text-muted leading-snug">{ind.purpose}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Hold Time</p>
-                  <p className="font-mono text-xs text-ivory-text font-bold">{bot.details.holdTime}</p>
-                </div>
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Risk / Trade</p>
-                  <p className="font-mono text-xs text-ivory-text font-bold">{bot.details.riskPerTrade}</p>
-                </div>
-              </div>
-
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Entry Rule</p>
-                <p className="font-mono text-[11px] text-muted leading-snug">{bot.details.entryRule}</p>
-              </div>
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-muted mb-1">Exit Rule</p>
-                <p className="font-mono text-[11px] text-muted leading-snug">{bot.details.exitRule}</p>
+            <div className="flex-1 flex flex-col justify-between">
+              <p className="text-muted leading-relaxed text-sm">{bot.details.overview}</p>
+              <div className="grid grid-cols-2 gap-3 mt-6">
+                {bot.details.stats.map((s) => (
+                  <div key={s.label} className="bg-white/4 rounded-xl px-3 py-2.5">
+                    <div className="font-mono text-ivory-text font-bold text-sm">{s.value}</div>
+                    <div className="font-mono text-[10px] uppercase tracking-widest text-muted mt-0.5">{s.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           )}

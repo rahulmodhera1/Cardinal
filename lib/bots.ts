@@ -1,15 +1,6 @@
-export interface BotIndicator {
-  name: string;
-  purpose: string;
-}
-
 export interface BotDetails {
-  strategy: string;
-  indicators: BotIndicator[];
-  holdTime: string;
-  entryRule: string;
-  exitRule: string;
-  riskPerTrade: string;
+  overview: string;
+  stats: { label: string; value: string }[];
 }
 
 export interface Bot {
@@ -51,21 +42,14 @@ export const bots: Bot[] = [
     sparkline: [100, 104, 101, 108, 106, 112, 110, 118, 115, 122, 119, 128],
     placeholder: true,
     details: {
-      strategy:
-        "Momentum swing strategy targeting large-cap NYSE and NASDAQ equities. Scans for high-probability breakout setups using a multi-indicator confirmation stack before committing to any position.",
-      indicators: [
-        { name: "RSI (14)", purpose: "Entry timing — avoids overbought conditions above 70" },
-        { name: "EMA 20 / EMA 50", purpose: "Trend filter — only longs above both moving averages" },
-        { name: "MACD (12, 26, 9)", purpose: "Momentum confirmation before entry is triggered" },
-        { name: "Volume Profile", purpose: "Breakout validated by volume > 1.5× 20-day average" },
-        { name: "ATR (14)", purpose: "Dynamic position sizing and stop-loss placement" },
+      overview:
+        "Money Printer is a systematic swing trading bot built for large-cap equities. It combines 5 technical indicators to identify high-probability breakout setups, only entering when all conditions align simultaneously. Position sizing and stop losses are handled automatically — no manual intervention required.",
+      stats: [
+        { label: "Indicators", value: "5" },
+        { label: "Avg Hold", value: "3–7 days" },
+        { label: "Risk / Trade", value: "1–2%" },
+        { label: "Markets", value: "NYSE · NASDAQ" },
       ],
-      holdTime: "3–7 trading days",
-      entryRule:
-        "Enters on confirmed breakout above resistance with RSI below 70, MACD bullish cross, and above-average volume.",
-      exitRule:
-        "Exits at a 2× ATR profit target or on momentum loss confirmed by MACD bearish cross.",
-      riskPerTrade: "1–2% of account per position",
     },
   },
   {
