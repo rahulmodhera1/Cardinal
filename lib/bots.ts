@@ -13,12 +13,14 @@ export interface Bot {
   overallReturn: string;
   description: string;
   sparkline: number[];
+  placeholder?: boolean;
+  comingSoon?: boolean;
 }
 
 export const bots: Bot[] = [
   {
-    id: "alpha-1",
-    name: "Cardinal Alpha-1",
+    id: "money-printer",
+    name: "Money Printer",
     market: "Equities",
     risk: "Moderate",
     winRate: 68,
@@ -32,6 +34,7 @@ export const bots: Bot[] = [
     description:
       "Swing momentum strategy on large-cap stocks. Targets 3–7 day holds on high-volume breakout setups.",
     sparkline: [100, 104, 101, 108, 106, 112, 110, 118, 115, 122, 119, 128],
+    placeholder: true,
   },
   {
     id: "theta",
@@ -41,14 +44,14 @@ export const bots: Bot[] = [
     winRate: 61,
     avgReturn: 4.8,
     maxDrawdown: -12.1,
-    liveSince: "Jun 2024",
-    totalTrades: 88,
-    bestMonth: "+24.7%",
-    worstMonth: "-9.3%",
-    overallReturn: "+33.6%",
-    description:
-      "Options premium capture on equities and indices. Trades defined-risk spreads on swing setups.",
-    sparkline: [100, 108, 105, 114, 109, 118, 115, 124, 120, 130, 126, 135],
+    liveSince: "TBA",
+    totalTrades: 0,
+    bestMonth: "—",
+    worstMonth: "—",
+    overallReturn: "—",
+    description: "Options premium capture strategy. Coming soon.",
+    sparkline: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+    comingSoon: true,
   },
   {
     id: "apex",
@@ -58,14 +61,14 @@ export const bots: Bot[] = [
     winRate: 57,
     avgReturn: 6.2,
     maxDrawdown: -18.5,
-    liveSince: "Sep 2024",
-    totalTrades: 64,
-    bestMonth: "+31.4%",
-    worstMonth: "-14.2%",
-    overallReturn: "+28.9%",
-    description:
-      "High-conviction swing strategy on /ES and /NQ futures. Larger moves, shorter timeframes.",
-    sparkline: [100, 112, 106, 118, 110, 125, 118, 134, 124, 140, 132, 145],
+    liveSince: "TBA",
+    totalTrades: 0,
+    bestMonth: "—",
+    worstMonth: "—",
+    overallReturn: "—",
+    description: "High-conviction futures swing strategy. Coming soon.",
+    sparkline: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+    comingSoon: true,
   },
   {
     id: "sentinel",
@@ -75,13 +78,13 @@ export const bots: Bot[] = [
     winRate: 72,
     avgReturn: 1.9,
     maxDrawdown: -4.2,
-    liveSince: "Jan 2024",
-    totalTrades: 198,
-    bestMonth: "+11.3%",
-    worstMonth: "-3.1%",
-    overallReturn: "+22.4%",
-    description:
-      "Low-volatility defensive swing strategy. Targets steady, consistent gains over aggressive returns.",
-    sparkline: [100, 102, 101, 104, 103, 106, 105, 108, 107, 110, 109, 112],
+    liveSince: "TBA",
+    totalTrades: 0,
+    bestMonth: "—",
+    worstMonth: "—",
+    overallReturn: "—",
+    description: "Low-volatility defensive swing strategy. Coming soon.",
+    sparkline: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+    comingSoon: true,
   },
 ];
